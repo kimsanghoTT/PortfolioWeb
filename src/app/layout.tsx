@@ -1,5 +1,5 @@
-import Header from "@/components/layout/header/header";
 import "./globals.css";
+import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer/footer";
 
 export const metadata = {
@@ -8,6 +8,8 @@ export const metadata = {
 };
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
+
+
   return (
     <html lang="en">
       <body>

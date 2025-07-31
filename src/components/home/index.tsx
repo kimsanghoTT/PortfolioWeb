@@ -10,6 +10,7 @@ const Home = () => {
     const homeRef = useRef<HTMLDivElement | null>(null);
     const contentBoxRef = useRef<HTMLDivElement | null>(null);
     useHomeScrollEvent({homeRef, contentBoxRef});
+    
 
     return (
     <div className={styles.wrapper} ref={homeRef}>

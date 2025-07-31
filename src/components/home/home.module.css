@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
 
+/* 메인 비주얼 */
 .introVisual{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .textBox{
     color: #fff;
@@ -14,8 +15,153 @@
     font-family: "Aldrich", sans-serif;
 }
 
+.scrollGuide{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  width: 48px;
+  height: 65px;
+  z-index: 6;
+}
+.scrollGuide .scrollBox{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scrollGuide .scrollBox .ico1{
+  width: 18px;
+  height: 35px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  border-radius: 9px;
+  margin-bottom: 10px;
+}
+.scrollGuide .scrollBox .ico2{
+  position: absolute;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border-radius: 50%;
+  animation: mouseScroll 1.2s ease-out infinite;
+}
+@keyframes mouseScroll{
+  0%{
+    top: 7px;
+    opacity: 1;
+  }
+  100%{
+    top: 17px;
+    opacity: 0;
+  }
+}
+.scrollGuide .scrollBox .guideText{
+  color: #fff;
+  font-family: "Pretendard";
+}
+
+/* 오버뷰 */
 .contentBox{
-    padding: 80px 0 130px;
+    padding: 80px 0 120px;
     width: 100%;
     height: 100vh;
+    margin: 0;
+    display: flex;
+}
+.content{
+    width: 100%;
+    font-size: 18px;
+    color: #222;
+    padding: 30px 70px;
+    flex: 1;
+    line-height: 1.25;
+    position: relative;
+    display: flex;
+    gap: 300px;
+    overflow: visible;
+}
+.borderBox{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.content p {
+    margin-left: 10px;
+}
+.sectionTitle{
+    font-size: 100px;
+    font-family: "Exo 2", sans-serif;
+    line-height: 1.2;
+}
+.content .overviewIntro{
+    font-size: 30px;
+    font-weight: 500;
+}
+.btnBox{
+    position: absolute;
+    display: flex;
+    gap: 90px;
+    bottom: 50px;
+    left: 90px;
+}
+.linkBtn{
+    width: 350px;
+    height: 200px;
+    border: #222 2px solid;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.linkBtn .btnTitle{
+    font-family: "Aldrich", sans-serif;
+    font-size: 40px;
+}
+.linkBtn .btnDesc{
+    display: inline-block;
+}
+.linkBtn .btnDesc::after{
+    content: '';
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: url("/img/right-arrow.png") no-repeat center;
+    background-size: 25px 25px;
+    position: absolute;
+    right: 25px;
+    transition: 0.3s;
+}
+.linkBtn:hover{
+    background-color: #222;
+    color: #fff;
+}
+.linkBtn:hover .btnDesc::after{
+    filter: brightness(10);
+    animation: shaking 0.5s ease-in-out infinite alternate;
+}
+@keyframes shaking{
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    } 
+}
+.overviewVisual{
+    width: 30%;
+    height: 100%;
+    position: relative;
 }
