@@ -9,5 +9,15 @@
     position: fixed;
     bottom: 0;
     opacity: 0;
-    z-index: 3;
+}
+@media screen and (max-width:730) {
+    .footerContainer{
+        justify-content: center;
+        text-align: center;
+        height: 70px;
+        position: fixed;
+    }
+    .footerContainer div:first-child{
+        display: none;
+    }
 }

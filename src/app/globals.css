@@ -11,6 +11,7 @@ body {
 
 body {
   font-family: "Noto Sans KR", sans-serif;
+  word-break: keep-all;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -25,7 +26,7 @@ ul{
 }
 
 a {
-  color: inherit;
+  color: #222;
   text-decoration: none;
 }
 nextjs-portal{

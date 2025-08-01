@@ -12,7 +12,7 @@ const IntroVisual = () => {
         <>
         <section className={styles.introVisual} ref={introRef}>
             <VisualParticle/>
-            <div className={styles.textBox}>
+            <div className={styles.introTextBox}>
                 <p>HELLO, WORLD!</p>
                 <p>KSH&apos;S PORTFOLIO</p>
             </div>
