@@ -36,9 +36,12 @@ const Header = () => {
             <div className={styles.m_menuBtnBox}>
                 <span className={styles.m_menuBtn} onClick={handleMobileMenu}><em className="hidden">모바일메뉴열기</em></span>
             </div>
-            {m_handleMenu && (
-                <M_HeaderNav onHandleM_Menu={handleMobileMenu} setM_handleMenu={setM_handleMenu}/>
-            )}
+            <M_HeaderNav 
+                onHandleM_Menu={handleMobileMenu} 
+                setM_handleMenu={setM_handleMenu}
+                m_handleMenu={m_handleMenu}
+            />
+
 
         </header>
     )

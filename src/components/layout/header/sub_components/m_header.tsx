@@ -1,35 +1,22 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useRef } from "react";
 import styles from "../header.module.css";
-import gsap from "gsap";
+import useMobileNavEvent from "../../hooks/useMobileNavEvent";
 
 type Props ={
     onHandleM_Menu: () => void
     setM_handleMenu: Dispatch<SetStateAction<boolean>>
+    m_handleMenu: boolean
 }
 
-const M_HeaderNav = ({onHandleM_Menu, setM_handleMenu} : Props) => {
+const M_HeaderNav = ({onHandleM_Menu, setM_handleMenu, m_handleMenu} : Props) => {
+    const m_navBoxRef = useRef<HTMLDivElement | null>(null);
 
-    // 뷰포트 변화 감지해서 모바일 메뉴 닫기
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth >= 731) {
-                setM_handleMenu(false);
-            }
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        handleResize();
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, [setM_handleMenu]);
+    useMobileNavEvent({m_handleMenu, m_navBoxRef, setM_handleMenu});
 
     return(
-        <div className={styles.m_navBox}>
+        <div ref={m_navBoxRef} className={`${styles.m_navBox} ${m_handleMenu ? styles.active : ""}`}>
             <span className={styles.m_menuCloseBtn} onClick={onHandleM_Menu}><em className="hidden">모바일메뉴닫기</em></span>
-            <div className={styles.m_navBoxUpper}>
+            <div className={styles.m_navBoxUpper}> 
                 <h1 className={styles.m_logoBox}>
                     <a href={"/home"}><span className={styles.logo}>KSH</span></a>
                     <span className="hidden">로고</span>
@@ -49,7 +36,8 @@ const M_HeaderNav = ({onHandleM_Menu, setM_handleMenu} : Props) => {
                 </ul>
             </nav>
             <div className={styles.m_navBoxLower}>
-                <p>qwert8494@naver.com</p>
+                <a href="#">qwert8494@naver.com</a>
+                <br />
                 <a href="https://github.com/kimsanghoTT" target="_blank">https://github.com/kimsanghoTT</a>
             </div>
         </div>

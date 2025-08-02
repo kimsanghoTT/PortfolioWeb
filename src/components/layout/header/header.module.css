@@ -86,6 +86,13 @@
     text-align: center;
     padding: 20px;
     gap: 50px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .5s;
+}
+.m_navBox.active{
+    opacity: 1;
+    pointer-events: all;
 }
 .m_menuCloseBtn{
     width: 30px;

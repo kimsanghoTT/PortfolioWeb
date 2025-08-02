@@ -1,4 +1,3 @@
-
 /* 메인 비주얼 */
 .introVisual{
     width: 100%;
@@ -232,8 +231,15 @@
     }
     .mainContent .sectionTitle{
         font-size: 50px;
-        border-bottom: 2px solid #222;
         line-height: 1.5;
+        --after-width: 0%; 
+    }
+    .mainContent .sectionTitle::after{
+        content: '';
+        display: block;
+        background: #222;
+        height: 2px;
+        width: var(--after-width);
     }
     .mainContent .overviewIntro{
         font-size: 20px;

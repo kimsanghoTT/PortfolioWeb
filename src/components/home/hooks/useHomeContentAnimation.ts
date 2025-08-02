@@ -18,6 +18,8 @@ const useHomeContentAnimation = ({contentBoxRef, rectRef} : Props) => {
     }, [contentBoxRef]);
 
     useLayoutEffect(() => {
+        const deskTopView = window.matchMedia("(min-width: 731px)").matches;
+        const mobileView = window.matchMedia("(max-width: 730px)").matches;
 
         const sectionTitleElements = contentBoxRef.current?.querySelectorAll(`.${styles.sectionTitle}`) as NodeListOf<HTMLElement>;
         sectionTitleElements.forEach(element => {
@@ -31,14 +33,22 @@ const useHomeContentAnimation = ({contentBoxRef, rectRef} : Props) => {
         const rect = rectRef.current;
         const triggerElement = contentBoxRef.current;
 
-        if (!rect || !triggerElement) return;
-
-        const rectLength = (rect.width.baseVal.value + rect.height.baseVal.value) * 2;
-        gsap.set(rect, { strokeDasharray: rectLength, strokeDashoffset: rectLength });
+        if (!triggerElement) return;
 
         const animationTimeLine = gsap.timeline({ paused: true });
+
+        if (deskTopView && rect) {
+            const rectLength = (rect.width.baseVal.value + rect.height.baseVal.value) * 2;
+            gsap.set(rect, { strokeDasharray: rectLength, strokeDashoffset: rectLength });
+
+            animationTimeLine.
+            to(rect, {strokeDashoffset: 0, duration: 2, ease: "power2.inOut",});
+        }
+        if(mobileView){
+            animationTimeLine.to(`.${styles.sectionTitle}`, {"--after-width": "100%", duration: 0.3});
+        }
+
         animationTimeLine
-        .to(rect, {strokeDashoffset: 0,duration: 2,ease: "power2.inOut",})
         .fromTo(`.${styles.sectionTitleTextChar}`,{x:50, opacity:0}, {x:0, opacity: 1, duration: 0.5, stagger:0.1, ease: "power2.inOut"})
         .fromTo(`.${styles.content} p`, {y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 0.5, stagger:0.2, ease: "power2.inOut"}, "<")
         .fromTo(`.${styles.linkBtn}`, {y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 0.5, ease: "power2.inOut"}, "<")
