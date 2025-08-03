@@ -1,8 +1,9 @@
-import { RefObject, useRef } from "react";
+import { ReactNode, RefObject, use, useEffect, useRef, useState } from "react";
 import styles from "../home.module.css";
 import useHomeContentAnimation from "../../_hooks/useHomeContentAnimation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
@@ -11,6 +12,14 @@ interface Props {
 
 const HomeContents = ({ contentBoxRef }: Props) => {
     const rectRef = useRef<SVGRectElement | null>(null);
+    const [sectionTitle, setSectionTitle] = useState<ReactNode>([]);
+
+    useEffect(() => {
+        const titleText = "OVERVIEW";
+        setSectionTitle(titleText.split("").map ((char, index) => (
+            <span key={index} className={styles.sectionTitleTextChar}>{char}</span>
+        )));
+    },[])
 
     useHomeContentAnimation({contentBoxRef, rectRef});
 
@@ -30,7 +39,7 @@ const HomeContents = ({ contentBoxRef }: Props) => {
                 <div className={styles.mainContent}>
                     <div className={styles.overviewTextBox}>
                         <h2 className={styles.sectionTitle}>
-                            OVERVIEW
+                            {sectionTitle}
                         </h2>
                         <p className={styles.overviewIntro}>안녕하세요! 프론트엔드 개발자를 꿈꾸는 김상호입니다.</p>
                         <br />
@@ -40,14 +49,14 @@ const HomeContents = ({ contentBoxRef }: Props) => {
                         <p>아래의 &apos;Project&apos;와 &apos;About&apos;을 눌러 저의 경험과 이야기를 확인해보세요.</p>
                     </div>
                     <div className={styles.btnBox}>
-                        <div className={styles.linkBtn}>
+                        <Link href={"/project"} className={styles.linkBtn}>
                             <span className={styles.btnTitle}>Project</span>
                             <span className={styles.btnDesc}>프로젝트 소개, 관련 기록 보러가기!</span>
-                        </div>
-                        <div className={styles.linkBtn}>
+                        </Link>
+                        <Link href={"/about"} className={styles.linkBtn}>
                             <span className={styles.btnTitle}>About</span>
-                            <span className={styles.btnDesc}>김상호는 누구인가? 알아보기!</span>
-                        </div>
+                            <span className={styles.btnDesc}>김상호는 누구인가? 알아보기!</span>                    
+                        </Link>
                     </div>
                 </div>
                 <div className={styles.overviewVisual}>

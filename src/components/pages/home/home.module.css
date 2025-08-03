@@ -12,6 +12,11 @@
     color: #fff;
     font-size: 100px;
     font-family: "Aldrich", sans-serif;
+    
+}
+.visualTextChar{
+    display: inline-block;
+    opacity: 0;
 }
 .scrollGuide{
   position: absolute;
@@ -106,6 +111,9 @@
     font-family: "Exo 2", sans-serif;
     line-height: 1.2;
 }
+.sectionTitleTextChar {
+    display: inline-block;
+}
 .content .overviewIntro{
     font-size: 30px;
     font-weight: 500;
@@ -147,7 +155,7 @@
     right: 25px;
     transition: 0.3s;
 }
-.linkBtn:hover{
+.linkBtn:hover {
     background-color: #222;
     color: #fff;
 }

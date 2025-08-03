@@ -1,0 +1,93 @@
+[
+    {
+        "id": "project-1",
+        "title": "Aquarium",
+        "description": 
+        "Aquarium은 사용자들에게 수족관을 간접 체험할 수 있는 플랫폼입니다. 이곳에서는 다양한 해양 생물에 대한 정보를 쉽고 재미있게 탐색할 수 있으며, 수족관 방문 전후에 유용한 경험을 제공합니다.",
+        "image": "/source/img/project/Aquarium.png",
+        "languages": "Java, JavaScript, HTML, CSS",
+        "frameworks": "Spring Boot, Mybatis, Lombok, jQuery, Bootstrap, JavaMail, thymeleaf",
+        "DB": "Oracle",
+        "git": "https://github.com/kimsanghoTT/Aquarium.git",
+        "notion" : "https://www.notion.so/camelCaseTeam-Aquarium-ba0e4c44bd084b51bf741508442fc929",
+        "link": ""
+    },
+    {
+        "id": "project-2",
+        "title": "FCB2O4",
+        "description": 
+        "우리의 풋살 커뮤니티는 단순한 예약 시스템을 넘어, 풋살을 사랑하는 모든 이들을 위한 종합 공간입니다. 이곳에서는 경기를 예약할 수 있을 뿐만 아니라, 용품 장터와 중고 장터를 통해 필요한 장비를 손쉽게 거래할 수 있습니다. 또한, 실시간 스트리밍과 채팅 기능을 통해 경기의 감동을 함께 나누고 소통할 수 있는 기회를 제공합니다.",
+        "image": "/source/img/project/FCB2O4.png",
+        "languages": "Java, JavaScript, HTML, CSS",
+        "frameworks": "Spring Boot, Mybatis, Lombok, React, Bootstrap, axios, moment, sockjs-client",
+        "DB": "MySQL",
+        "git": "https://github.com/kimsanghoTT/B2O4.git",
+        "notion": "https://www.notion.so/FCB2O4-a955f3228a5342f395a6a50e135d9aa3",
+        "link": ""
+    },
+    {
+        "id": "project-3",
+        "title": "chailx",
+        "description": 
+        "처음으로 GSAP을 적용해 인터랙션을 구현한 2페이지 분량의 기업형 웹사이트입니다. 사용자 경험을 고려한 디자인과 게시판 기능을 포함한 구조로, 부드러운 애니메이션과 인터랙티브한 요소를 통해 방문자에게 매력적인 경험을 제공합니다.",
+        "image": "/source/img/project/chalix.png",
+        "languages": "JavaScript, HTML, CSS",
+        "frameworks": "React, GSAP, axios, moment",
+        "DB": "",
+        "git": "https://github.com/kimsanghoTT/B2O4.git",
+        "notion": "",
+        "link": "https://chalix.netlify.app/"
+    },
+    {
+        "id": "project-4",
+        "title": "Visual Poetry",
+        "description": 
+        "GSAP을 활용해 스크롤에 따른 애니메이션을 적용한 1페이지 반응형 웹사이트입니다. 디지털 아트 전시를 주제로 시각적 몰입감을 극대화했으며, 다양한 해상도에서도 자연스럽게 콘텐츠가 배치되도록 설계했습니다.",
+        "image": "/source/img/project/VisualPoetry.png",
+        "languages": "JavaScript, HTML, CSS",
+        "frameworks": "React, GSAP",
+        "DB": "",
+        "git": "https://github.com/kimsanghoTT/Responsive-Web-Design.git",
+        "notion": "",
+        "link": "https://ksh-responsive-web-design.netlify.app/"
+    },
+    {
+        "id": "project-5",
+        "title": "clone-aquaplanet-ilsan",
+        "description": 
+        "2025년 5월부터 약 두 달간 진행한 풀스택 클론 코딩 프로젝트입니다. 실제 웹사이트 '아쿠아플라넷 일산'을 기반으로, 기본적인 티켓예약/회원 기능 흐름을 구축했습니다. Netlify에 배포된 프론트엔드 시연과 GitHub 코드를 함께 제공합니다.",
+        "image": "/source/img/project/aquaplanet_ilsan.png",
+        "languages": "JavaScript, HTML, CSS",
+        "frameworks": "React, GSAP, Ant Design, axios, moment, Swiper, Java, Spring Boot, Mybatis, Lombok, Spring Mail",
+        "DB": "MySQL",
+        "git": "https://github.com/kimsanghoTT/clone-aquaplanet-ilsan.git",
+        "notion": "https://www.notion.so/clone-aquaplanet-ilsan-23850777912280b4a48cf85438738b2c",
+        "link": "https://clone-aquaplanet-ilsan.netlify.app/aquaplanet/ilsan"
+    },
+    {
+        "id": "project-6",
+        "title": "KSHPF",
+        "description": 
+        "처음으로 Next.js와 TypeScript를 사용해 제작한 포트폴리오 사이트입니다. GSAP을 활용한 부드러운 애니메이션을 통해 쾌적한 사용자 경험을 제공하며, 다양한 디바이스에서의 일관된 경험을 위해 반응형 레이아웃으로 설계했습니다. 프론트엔드 개발자로서의 방향성과 성장을 표현한 프로젝트입니다.",
+        "image": "/source/img/project/KSHPF.png",
+        "languages": "TypeScript, HTML, CSS",
+        "frameworks": "React, Next.js, GSAP, tsParticles",
+        "DB": "",
+        "git": "https://github.com/kimsanghoTT/PortfolioWeb.git",
+        "notion": "",
+        "link": ""
+    },
+    {
+        "id": "project-7",
+        "title": "추가예정",
+        "description": 
+        "추가 예정인 프로젝트입니다. 현재 개발 중이며, 곧 업데이트될 예정입니다.",
+        "image": "",
+        "languages": "TypeScript, HTML, CSS",
+        "frameworks": "React, Next.js, GSAP",
+        "DB": "",
+        "git": "",
+        "notion": "",
+        "link": ""
+    }
+]
