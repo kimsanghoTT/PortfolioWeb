@@ -68,9 +68,6 @@
     background-size: 1000px 600px;
     width: 450px;
     height: 450px;
-    transform: scale(1);
-    filter: grayscale(0);
-    transition: .5s ease;
     cursor: pointer;
     overflow: hidden;
     position: relative;
@@ -78,10 +75,7 @@
     border: 1px solid #555;
     opacity: 0;
 }
-.projectCard:hover {
-    transform: scale(1.05);
-    filter: grayscale(0.8);
-}
+
 .hoverBox{
     width: 80%;
     height: 60px;

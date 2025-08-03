@@ -11,7 +11,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
 
 
   return (
-    <html lang="en">
+    <html lang="ko">
       <body>
         {children}
       </body>
