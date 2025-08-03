@@ -2,7 +2,7 @@ import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import styles from "../home.module.css";
+import styles from "../home/home.module.css";
 
 interface Props {
     contentBoxRef: React.RefObject<HTMLDivElement | null>;

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import styles from '../home.module.css';
-import useIntroVisual from '../hooks/useIntroVisual';
+import useIntroVisual from '../../_hooks/useIntroVisual';
 import VisualParticle from './home_visual_particle';
 
 const IntroVisual = () => {

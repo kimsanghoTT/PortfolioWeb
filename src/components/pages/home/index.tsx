@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import styles from './home.module.css';
 import HomeContents from './sub_components/home_contents';
 import MainVisual from './sub_components/home_main_visual';
-import useHomeScrollEvent from './hooks/useHomeScrollEvent';
+import useHomeScrollEvent from '../_hooks/useHomeScrollEvent';
 
 const Home = () => {
     const homeRef = useRef<HTMLDivElement | null>(null);

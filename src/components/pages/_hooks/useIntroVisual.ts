@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { RefObject, useEffect } from "react";
-import styles from "../home.module.css";
+import styles from "../home/home.module.css";
 
 interface Props {
     introRef: RefObject<HTMLElement | null>;

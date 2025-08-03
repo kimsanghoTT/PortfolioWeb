@@ -1,7 +1,6 @@
 import { RefObject, useRef } from "react";
 import styles from "../home.module.css";
-import Image from "next/image";
-import useHomeContentAnimation from "../hooks/useHomeContentAnimation";
+import useHomeContentAnimation from "../../_hooks/useHomeContentAnimation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
