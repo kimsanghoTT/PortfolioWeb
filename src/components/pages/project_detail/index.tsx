@@ -26,10 +26,10 @@ const ProjectDetail = () => {
     }
 
     return(
-        <div className={styles.wrapper} style={{background: `url(${project.image})`}}>
+        <div className={styles.wrapper} style={{background: `linear-gradient(to right, #fff 40%, transparent), url(${project.image}) no-repeat center/cover`}}>
             <section className={styles.container}>
                 <div className={styles.upperArea}>
-                    <span className={styles.back}><span className="blind">뒤로가기</span></span>
+                    <span className={styles.back}><span className="hidden">뒤로가기</span></span>
                 </div>
                 <div className={styles.contentBox}>
                     <h2 className={styles.projectTitle}>
