@@ -69,7 +69,7 @@
     width: 30px;
     height: 30px;
     display: block;
-    background: url("/source/img/m_menu.png");
+    background: url("/source/img/icons/m_menu.png");
     background-size: 30px 30px;
 }
 .m_navBox{
@@ -99,7 +99,7 @@
     width: 30px;
     height: 30px;
     display: block;
-    background: url("/source/img/m_close.png");
+    background: url("/source/img/icons/m_close.png");
     background-size: 30px 30px;
     position: absolute;
     right: 20px;

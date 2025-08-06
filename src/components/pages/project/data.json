@@ -52,7 +52,7 @@
         "title": "clone-aquaplanet-ilsan",
         "description": "2025년 5월부터 약 두 달간 진행한 풀스택 클론 코딩 프로젝트입니다. 실제 웹사이트 '아쿠아플라넷 일산'을 기반으로, 기본적인 티켓예약/회원 기능 흐름을 구축했습니다. Netlify에 배포된 프론트엔드 시연과 GitHub 코드를 함께 제공합니다.",
         "image": "/source/img/project/aquaplanet_ilsan.png",
-        "languages": ["JavaScript", "HTML", "CSS"],
+        "languages": ["Java", "JavaScript", "HTML", "CSS"],
         "frameworks": ["React", "GSAP", "Ant Design", "axios", "moment", "Swiper", "Java", "Spring Boot", "Mybatis", "Lombok", "Spring Mail"],
         "DB": "MySQL",
         "git": "https://github.com/kimsanghoTT/clone-aquaplanet-ilsan.git",
