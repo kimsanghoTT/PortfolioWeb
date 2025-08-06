@@ -4,15 +4,21 @@ import projectList from "../project/data.json";
 import styles from "./projectDetail.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
+interface Skills{
+    name: string,
+    image:string
+}
 
 interface Project {
     id: string;
     title: string;
     description: string;
     image: string;
-    languages: string[]; 
-    frameworks: string[]; 
-    DB: string;
+    languages: Skills[]; 
+    frameworks: Skills[]; 
+    DB: Skills[];
     git: string;
     notion: string;
     link: string; 
@@ -47,27 +53,40 @@ const ProjectDetail = () => {
                     </div>
                     <div className={`${styles.usedSkills} ${styles.listBlock}`}>
                         <span className={styles.title}>Used Skills</span>
+                        <div className={styles.skill}>
+                            <span className={styles.subtitle}>Languages</span>
+                            <ul className={styles.languages}>
+                                {project.languages.map((item, index) => (
+                                    <li key={index}>
+                                        <span>{item.name}</span>
+                                        <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}></span>
+                                    </li>
 
-                        <span className={styles.subtitle}>Languages</span>
-                        <ul className={styles.languages}>
-                            {project.languages.map((item, index) => (
-                                <li key={index}>{item}</li>
-                            ))}
-                        </ul>
+                                ))}
+                            </ul>
 
-                        <span className={styles.subtitle}>Framework / Library</span>
-                        <ul className={styles.frameworks}>
-                            {project.frameworks.map((item, index) => (
-                                <li key={index}>{item}</li>
-                            ))}
-                        </ul>
-                        
-                        <span className={styles.subtitle}>DB</span>
-                        <ul className={styles.dbs}>
-                            <li>{project.DB}</li>
-                        </ul>
+                            <span className={styles.subtitle}>Framework / Library</span>
+                            <ul className={styles.frameworks}>
+                                {project.frameworks.map((item, index) => (
+                                    <li key={index}>
+                                        <span>{item.name}</span>
+                                        <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}></span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <span className={styles.subtitle}>DB</span>
+                            <ul className={styles.dbs}>
+                                {project.DB.map((item, index) => (
+                                    <li key={index}>
+                                        <span>{item.name}</span>
+                                        <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}></span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
-                    <div className={`${styles.linkList} ${styles.listBlock}`}>
+                    <div className={`${styles.references} ${styles.listBlock}`}>
                         <span className={styles.title}>References</span>
                         <ul>
                             {project.link !== "" && (
