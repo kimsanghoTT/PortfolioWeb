@@ -4,7 +4,10 @@ import projectList from "../project/data.json";
 import styles from "./projectDetail.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import UsedSkills from "./sub_components/projectDetail_usedSkills";
+import References from "./sub_components/projectDetail_references";
 
 interface Skills{
     name: string,
@@ -29,12 +32,30 @@ const ProjectDetail = () => {
     const project:Project | undefined = projectList.find(item => item.id === projectId);
     const router = useRouter();
 
-    if (!project) {
-        return <div className={styles.notFound}>프로젝트를 찾을 수 없습니다.</div>;
-    }
+    useLayoutEffect(() => {
+        const animationTimeOut = setTimeout(() => {
+            const projectDetailAnimation = gsap.timeline();
+
+            projectDetailAnimation
+            .to(`.${styles.projectTitle}`,{opacity:1, duration:0.3})
+            .fromTo(`.${styles.title}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3})
+
+        }, 10)
+
+        return () => clearTimeout(animationTimeOut);
+    },[])
 
     const backToProject = () => {
         router.back();
+    }
+
+    if (!project) {
+        return (
+            <div className={styles.notFound}>
+                <span>프로젝트를 찾을 수 없습니다.</span>
+                <Link href={"/project"}>돌아가기</Link>
+            </div>
+        )
     }
 
     return(
@@ -48,67 +69,11 @@ const ProjectDetail = () => {
                         {project.title}
                     </h2>
                     <div className={`${styles.description} ${styles.listBlock}` }>
-                        <span className={styles.title}>Description</span>
+                        <span className={styles.title}><span>Description</span></span>
                         <p>{project.description}</p>
                     </div>
-                    <div className={`${styles.usedSkills} ${styles.listBlock}`}>
-                        <span className={styles.title}>Used Skills</span>
-                        <div className={styles.skill}>
-                            <span className={styles.subtitle}>Languages</span>
-                            <ul className={styles.languages}>
-                                {project.languages.map((item, index) => (
-                                    <li key={index}>
-                                        <span>{item.name}</span>
-                                        <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}></span>
-                                    </li>
-
-                                ))}
-                            </ul>
-
-                            <span className={styles.subtitle}>Framework / Library</span>
-                            <ul className={styles.frameworks}>
-                                {project.frameworks.map((item, index) => (
-                                    <li key={index}>
-                                        <span>{item.name}</span>
-                                        <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}></span>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <span className={styles.subtitle}>DB</span>
-                            <ul className={styles.dbs}>
-                                {project.DB.map((item, index) => (
-                                    <li key={index}>
-                                        <span>{item.name}</span>
-                                        <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}></span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                    <div className={`${styles.references} ${styles.listBlock}`}>
-                        <span className={styles.title}>References</span>
-                        <ul>
-                            {project.link !== "" && (
-                                <li className={styles.link}>
-                                    <span className={styles.subtitle}>Link</span>
-                                    <Link href={project.link} target="_blank">{project.link}</Link>
-                                </li>
-                            )}
-                            {project.git !== "" && (
-                                <li className={styles.link}>
-                                    <span className={styles.subtitle}>Github</span>
-                                    <Link href={project.git} target="_blank">{project.git}</Link>
-                                </li>                       
-                            )}
-                            {project.notion !== "" && (
-                                <li className={styles.link}>
-                                    <span className={styles.subtitle}>Detail</span>
-                                    <Link href={project.notion} target="_blank">{project.notion}</Link>
-                                </li>
-                            )}      
-                        </ul>
-                    </div>
+                    <UsedSkills project={project}/>
+                    <References project={project}/>
                 </div>
             </section>
         </div>

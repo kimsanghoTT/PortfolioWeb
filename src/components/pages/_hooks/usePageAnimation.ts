@@ -28,6 +28,6 @@ const usePageAnimation = ({contentRef}: Props) => {
         },10)
 
         return () => clearTimeout(animationTimeout);
-    },[])
+    },[contentRef])
 }
 export default usePageAnimation;

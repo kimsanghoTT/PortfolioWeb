@@ -152,14 +152,8 @@
         "description": "추가 예정인 프로젝트입니다. 현재 개발 중이며, 곧 업데이트될 예정입니다.",
         "image": "",
         "languages": [
-            { "name": "TypeScript", "image": "/source/img/icons/ico_typescript.png" },
-            { "name": "HTML", "image": "/source/img/icons/ico_html.png" },
-            { "name": "CSS", "image": "/source/img/icons/ico_css.png" }
         ],
         "frameworks": [
-            { "name": "React", "image": "/source/img/icons/ico_react.png" },
-            { "name": "Next.js", "image": "/source/img/icons/ico_next.js.png" },
-            { "name": "GSAP", "image": "/source/img/icons/ico_gsap.png" }
         ],
         "DB": [],
         "git": "",
