@@ -37,9 +37,18 @@ const ProjectDetail = () => {
             const projectDetailAnimation = gsap.timeline();
 
             projectDetailAnimation
-            .to(`.${styles.projectTitle}`,{opacity:1, duration:0.3})
-            .fromTo(`.${styles.title}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3})
-
+            .to(`.${styles.projectTitle}`,{opacity:1, duration:0.5})
+            .fromTo(`.${styles.numIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
+            .fromTo(`.${styles.title} .${styles.titleText}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
+            .fromTo(`.${styles.description} p`, {y:50}, {opacity:1, y:0, duration:0.5, ease:"power2.inOut"})
+            .fromTo(`.${styles.language}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
+            .fromTo(`.${styles.framework}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
+            .fromTo(`.${styles.db}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
+            .fromTo(`.${styles.languages} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
+            .fromTo(`.${styles.frameworks} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
+            .fromTo(`.${styles.dbs} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
+            .fromTo(`.${styles.references} .${styles.subtitle}`, {y:50}, {y:0, opacity:1, duration:0.5, ease:"power2.inOut", stagger:0.3})
+            .fromTo(`.${styles.link} a`, {x:50}, {x:0, opacity:1, duration:0.5, stagger:0.2, ease:"power2.inOut"}, "<")
         }, 10)
 
         return () => clearTimeout(animationTimeOut);
@@ -69,7 +78,10 @@ const ProjectDetail = () => {
                         {project.title}
                     </h2>
                     <div className={`${styles.description} ${styles.listBlock}` }>
-                        <span className={styles.title}><span>Description</span></span>
+                        <div className={styles.title}>
+                            <span className={`${styles.numIcon} ${styles.num01}`}><span className="hidden">넘버링아이콘</span></span>
+                            <span className={styles.titleText}>Description</span>
+                        </div>
                         <p>{project.description}</p>
                     </div>
                     <UsedSkills project={project}/>

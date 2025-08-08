@@ -71,36 +71,32 @@
     margin-top: 100px;
 }
 .title{
-    font-size: 25px;
-    font-family:'Aldrich';
-    font-weight: 500;
     display: flex;
     align-items: center;
     gap: 20px;
+}
+.titleText{
+    font-size: 25px;
+    font-family:'Aldrich';
+    font-weight: 500;
     opacity: 0;
 }
-.description .title::before{
-    content: '';
+.numIcon{
     display: inline-block;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+}
+.description .num01{
     background: url("/source/img/icons/list01.png") no-repeat center;
-    width: 30px;
-    height: 30px;
     background-size: 30px 30px;
 }
-.usedSkills .title::before{
-    content: '';
-    display: inline-block;
+.usedSkills .num02{
     background: url("/source/img/icons/list02.png") no-repeat center;
-    width: 30px;
-    height: 30px;
     background-size: 30px 30px;
 }
-.references .title::before{
-    content: '';
-    display: inline-block;
+.references .num03{
     background: url("/source/img/icons/list03.png") no-repeat center;
-    width: 30px;
-    height: 30px;
     background-size: 30px 30px;
 }
 .subtitle{
@@ -108,10 +104,12 @@
     font-family:'Aldrich';
     font-weight: 500;
     display: inline-block;
+    opacity: 0;
 }
 .description p{
     margin-top: 30px;
     margin-left: 50px;
+    opacity: 0;
 }
 .listBlock ul{
     margin-left: 50px;
@@ -120,7 +118,7 @@
     margin-top: 30px;
     margin-left: 50px;
 }
-.skill ul{
+.languages, .frameworks, .dbs{
     margin-left: 0;
     margin-top: 30px;
     display: flex;
@@ -143,6 +141,7 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    opacity: 0;
 }
 .skillIcon{
     width: 50px;
@@ -185,6 +184,9 @@
     background-color: #222;
     color: #fff;
 }
+.language, .framework, .db, .deploy, .github, .notion, .link a{
+    opacity: 0;
+}
 
 @media screen and (min-width:731px) and (max-width:1350px) {
     .container{
@@ -203,28 +205,22 @@
         width: 100%;
         padding: 15px 0 50px;
     }
-    .description .title::before{
-        content: '';
+    .numIcon{
         display: inline-block;
+        width: 20px;
+        height: 20px;
+        opacity: 0;
+    }
+    .description .num01{
         background: url("/source/img/icons/list01.png") no-repeat center;
-        width: 20px;
-        height: 20px;
         background-size: 20px 20px;
     }
-    .usedSkills .title::before{
-        content: '';
-        display: inline-block;
+    .usedSkills .num02{
         background: url("/source/img/icons/list02.png") no-repeat center;
-        width: 20px;
-        height: 20px;
         background-size: 20px 20px;
     }
-    .references .title::before{
-        content: '';
-        display: inline-block;
+    .references .num03{
         background: url("/source/img/icons/list03.png") no-repeat center;
-        width: 20px;
-        height: 20px;
         background-size: 20px 20px;
     }
     .listBlock{

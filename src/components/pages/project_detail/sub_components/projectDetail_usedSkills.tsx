@@ -26,9 +26,12 @@ const UsedSkills = ({project}: Props) => {
 
     return(
         <div className={`${styles.usedSkills} ${styles.listBlock}`}>
-            <span className={styles.title}><span>Used Skills</span></span>
+            <div className={styles.title}>
+                <span className={`${styles.numIcon} ${styles.num02}`}><span className="hidden">넘버링아이콘</span></span>
+                <span className={styles.titleText}>Used Skills</span>
+            </div>
             <div className={styles.skill}>
-                <span className={styles.subtitle}>Languages</span>
+                <span className={`${styles.subtitle} ${styles.language}`}>Languages</span>
                 <ul className={styles.languages}>
                     {project.languages.map((item, index) => (
                         <li key={index}>
@@ -41,7 +44,7 @@ const UsedSkills = ({project}: Props) => {
                     ))}
                 </ul>
 
-                <span className={styles.subtitle}>Framework / Library</span>
+                <span className={`${styles.subtitle} ${styles.framework}`}>Framework / Library</span>
                 <ul className={styles.frameworks}>
                     {project.frameworks.map((item, index) => (
                         <li key={index}>
@@ -53,7 +56,7 @@ const UsedSkills = ({project}: Props) => {
                     ))}
                 </ul>
 
-                <span className={styles.subtitle}>DB</span>
+                <span className={`${styles.subtitle} ${styles.db}`}>DB</span>
                 <ul className={styles.dbs}>
                     {project.DB.map((item, index) => (
                         <li key={index}>

@@ -26,23 +26,26 @@ interface Props{
 const References = ({project}: Props) => {
     return(
         <div className={`${styles.references} ${styles.listBlock}`}>
-            <span className={styles.title}><span>References</span></span>
+            <div className={styles.title}>
+                <span className={`${styles.numIcon} ${styles.num03}`}><span className="hidden">넘버링아이콘</span></span>
+                <span className={styles.titleText}>References</span>
+            </div>
             <ul>
                 {project.link !== "" && (
                     <li className={styles.link}>
-                        <span className={styles.subtitle}>Link</span>
+                        <span className={`${styles.subtitle} ${styles.deploy}`}>Link</span>
                         <Link href={project.link} target="_blank">{project.link}</Link>
                     </li>
                 )}
                 {project.git !== "" && (
                     <li className={styles.link}>
-                        <span className={styles.subtitle}>Github</span>
+                        <span className={`${styles.subtitle} ${styles.github}`}>Github</span>
                         <Link href={project.git} target="_blank">{project.git}</Link>
                     </li>                       
                 )}
                 {project.notion !== "" && (
                     <li className={styles.link}>
-                        <span className={styles.subtitle}>Detail</span>
+                        <span className={`${styles.subtitle} ${styles.notion}`}>Detail</span>
                         <Link href={project.notion} target="_blank">{project.notion}</Link>
                     </li>
                 )}      
