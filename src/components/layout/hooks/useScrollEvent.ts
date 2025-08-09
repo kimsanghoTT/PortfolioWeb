@@ -17,8 +17,12 @@ const useLayoutAnimation = () => {
             gsap.set(footer, {yPercent: 100, opacity:0, overwrite: true});
         }
         else{
-            gsap.fromTo(header, { yPercent: -100, opacity:0}, {yPercent:0, opacity:1, duration: 1, ease: "power2.out"});
-            gsap.fromTo(footer, { yPercent: 100, opacity:0}, {yPercent:0, opacity:1, duration: 1, ease: "power2.out"});
+            if(header){
+                gsap.fromTo(header, { yPercent: -100, opacity:0}, {yPercent:0, opacity:1, duration: 1, ease: "power2.out"});
+            }
+            if(footer){
+                gsap.fromTo(footer, { yPercent: 100, opacity:0}, {yPercent:0, opacity:1, duration: 1, ease: "power2.out"});
+            }
         }
 
     },[isHome]);

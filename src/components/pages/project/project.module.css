@@ -131,7 +131,7 @@
         transform: translateX(-50%);
         transition: none;
     }
-        .projectCard:hover .hoverBox {
+    .projectCard:hover .hoverBox {
         transform: translateX(-50%); 
         opacity: 1; 
         transition: none; 

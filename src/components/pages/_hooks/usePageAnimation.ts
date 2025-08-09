@@ -1,12 +1,12 @@
 import gsap from "gsap";
-import styles from "../project/project.module.css";
 import { useLayoutEffect } from "react";
 
 interface Props {
     contentRef: React.RefObject<HTMLDivElement | null>;
+    styles: {[key:string]:string}
 }
 
-const usePageAnimation = ({contentRef}: Props) => {
+const usePageAnimation = ({contentRef, styles}: Props) => {
 
     useLayoutEffect(() => {
         const animationTimeout = setTimeout(() => {

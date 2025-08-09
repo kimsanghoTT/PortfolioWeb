@@ -16,7 +16,7 @@ const Project = () => {
     },[])
 
 
-    usePageAnimation({ contentRef });
+    usePageAnimation({ contentRef, styles });
 
     return(
         <div className={styles.wrapper}>
