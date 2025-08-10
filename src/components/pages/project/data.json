@@ -16,7 +16,7 @@
             { "name": "Lombok", "image": "/source/img/icons/ico_lombok.png" },
             { "name": "jQuery", "image": "/source/img/icons/ico_jquery.png" },
             { "name": "Bootstrap", "image": "/source/img/icons/ico_bootstrap.png" },
-            { "name": "JavaMail", "image": "/source/img/icons/ico_java-mail.png" },
+            { "name": "Java Mail", "image": "/source/img/icons/ico_java-mail.png" },
             { "name": "thymeleaf", "image": "/source/img/icons/ico_thymeleaf.png" }
         ],
         "DB": [
