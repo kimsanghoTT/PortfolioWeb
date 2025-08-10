@@ -32,7 +32,7 @@ const About = () => {
                         <span className={`${styles.numIcon} ${styles.num01}`}><span className="hidden">넘버링아이콘</span></span>
                         <span className={styles.titleText}>Kim Sang Ho</span>
                     </div>
-                    <p></p>
+                    <p> </p>
                 </div>
                 <div className={`${styles.education} ${styles.listBlock}` }>
                     <div className={styles.subtitle}>
