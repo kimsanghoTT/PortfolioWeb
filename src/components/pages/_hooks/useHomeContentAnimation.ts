@@ -39,7 +39,7 @@ const useHomeContentAnimation = ({contentBoxRef, rectRef} : Props) => {
                 to(rect, {strokeDashoffset: 0, duration: 2, ease: "power2.inOut",});
             }
             if(mobileView){
-                animationTimeLine.to(`.${styles.sectionTitle}`, {"--after-width": "100%", duration: 0.3});
+                animationTimeLine.to(`.${styles.sectionTitle}`, {"--after-width": "100%", duration: 1});
             }
 
             animationTimeLine

@@ -1,29 +1,25 @@
 "use client"
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { skills } from "./data"; 
 import styles from "./about.module.css";
 import usePageAnimation from "../_hooks/usePageAnimation";
 
 const About = () => {
     const contentRef = useRef<HTMLDivElement | null>(null);
-    const [sectionTitle, setSectionTitle] = useState<ReactNode>([]);
-
-    useEffect(() => {
-        const titleText = "ABOUT";
-        setSectionTitle(titleText.split("").map ((char, index) => (
-            <span key={index} className={styles.sectionTitleTextChar}>{char}</span>
-        )));
-    },[])
+    const titleText = "ABOUT";
 
     usePageAnimation({contentRef, styles});
+
 
     return(
         <div className={styles.wrapper}>
             <section className={styles.contentBox} ref={contentRef}>
                 <div className={styles.sectionTitle}>
                     <h2 className={styles.title}>
-                        {sectionTitle}
+                        {titleText.split("").map ((char, index) => (
+                            <span key={index} className={styles.sectionTitleTextChar}>{char}</span>
+                        ))}
                     </h2>
                     <p>기술은 사람을 위한 도구이며, 경험은 그 가치를 완성합니다.</p>
                     <p>사람과 사람을 잇는 즐거운 웹 경험을 만드는 개발자가 되겠습니다.</p>
@@ -109,7 +105,7 @@ const About = () => {
                         </ul>
                         <p className={styles.skillListTitle}>Database</p>
                         <ul>
-                            {skills.frameworks.map((db, index) => (
+                            {skills.databases.map((db, index) => (
                                 <li key={index}>
                                     <span className={styles.skillName}>{db.name}</span>
                                     <span 

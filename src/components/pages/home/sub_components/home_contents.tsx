@@ -1,10 +1,7 @@
-import { ReactNode, RefObject, use, useEffect, useRef, useState } from "react";
+import { RefObject, useRef } from "react";
 import styles from "../home.module.css";
 import useHomeContentAnimation from "../../_hooks/useHomeContentAnimation";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
   contentBoxRef: RefObject<HTMLDivElement | null>;
@@ -12,14 +9,7 @@ interface Props {
 
 const HomeContents = ({ contentBoxRef }: Props) => {
     const rectRef = useRef<SVGRectElement | null>(null);
-    const [sectionTitle, setSectionTitle] = useState<ReactNode>([]);
-
-    useEffect(() => {
-        const titleText = "OVERVIEW";
-        setSectionTitle(titleText.split("").map ((char, index) => (
-            <span key={index} className={styles.sectionTitleTextChar}>{char}</span>
-        )));
-    },[])
+    const titleText = "OVERVIEW";
 
     useHomeContentAnimation({contentBoxRef, rectRef});
 
@@ -27,19 +17,21 @@ const HomeContents = ({ contentBoxRef }: Props) => {
         <>
         <section className={styles.contentBox} ref={contentBoxRef}>
             <div className={styles.content}>
-                    <svg
-                    width="100%"
-                    height="100%"
-                    viewBox="0 -1 100 100"
-                    preserveAspectRatio="none"
-                    className={styles.borderBox}
-                    >
-                        <rect ref={rectRef} x={0} y={0} width={100} height={98.5} fill="none" stroke="#555" strokeWidth={1.2}></rect>
-                    </svg>
+                <svg
+                width="100%"
+                height="100%"
+                viewBox="0 -1 100 100"
+                preserveAspectRatio="none"
+                className={styles.borderBox}
+                >
+                    <rect ref={rectRef} x={0} y={0} width={100} height={98.5} fill="none" stroke="#555" strokeWidth={1.2}></rect>
+                </svg>
                 <div className={styles.mainContent}>
                     <div className={styles.overviewTextBox}>
                         <h2 className={styles.sectionTitle}>
-                            {sectionTitle}
+                            {titleText.split("").map ((char, index) => (
+                                <span key={index} className={styles.sectionTitleTextChar}>{char}</span>
+                            ))}
                         </h2>
                         <p className={styles.overviewIntro}>안녕하세요! 프론트엔드 개발자를 꿈꾸는 김상호입니다.</p>
                         <br />
