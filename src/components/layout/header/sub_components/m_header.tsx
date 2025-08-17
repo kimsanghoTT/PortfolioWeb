@@ -36,7 +36,7 @@ const M_HeaderNav = ({onHandleM_Menu, setM_handleMenu, m_handleMenu} : Props) =>
                 </ul>
             </nav>
             <div className={styles.m_navBoxLower}>
-                <a href="#">qwert8494@naver.com</a>
+                <a href="mailto:qwert8494@naver.com">qwert8494@naver.com</a>
                 <br />
                 <a href="https://github.com/kimsanghoTT" target="_blank">https://github.com/kimsanghoTT</a>
             </div>
