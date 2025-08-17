@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <footer id="mainFooter" className={styles.footerContainer}>
             <div>
-                <p>qwert8494@naver.com</p>
+                <a href="mailto:qwert8494@naver.com">qwert8494@naver.com</a>
                 <Link href="https://github.com/kimsanghoTT" target="_blank">https://github.com/kimsanghoTT</Link>
             </div>
             <div>©2024 KSHPF All Rights Reserved.</div>

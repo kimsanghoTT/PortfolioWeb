@@ -129,14 +129,25 @@
 }
 .skill .subtitle{
     margin-top: 50px;
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.skill .subtitle::before{
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: #222;
 }
 .skill .subtitle:first-child{
     margin-top: 0;
 }
+.skill ul{
+    margin-left: 0;
+}
 .skill li{
     font-weight: 600;
-    margin-top: 20px;
     flex-basis: 20%;
     display: flex;
     flex-direction: column;
@@ -254,7 +265,6 @@
     }
     .skill .subtitle{
         margin-top: 30px;
-        display: block;
     }
 
 }

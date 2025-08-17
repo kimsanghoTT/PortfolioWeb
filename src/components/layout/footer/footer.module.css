@@ -11,6 +11,9 @@
     opacity: 0;
     color: #222;
 }
+.footerContainer a{
+    display: block;
+}
 @media screen and (max-width:730) {
     .footerContainer{
         justify-content: center;
