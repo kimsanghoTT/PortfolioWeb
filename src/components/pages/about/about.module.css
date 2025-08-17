@@ -91,6 +91,7 @@
 .kimsangho p{
     margin-left: 50px;
     opacity: 0;
+    font-size: 18px;
 }
 .kimsangho p:first-of-type{
     margin-top: 20px;
@@ -228,6 +229,7 @@
     }
     .kimsangho p{
         margin-left: 30px;
+        font-size: 16px;
     }
     .education ul, .certificate ul, .skills ul{
         margin-left: 30px;
