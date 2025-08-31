@@ -14,7 +14,7 @@
 .footerContainer a{
     display: block;
 }
-@media screen and (max-width:730) {
+@media screen and (max-width:730px) {
     .footerContainer{
         justify-content: center;
         text-align: center;
