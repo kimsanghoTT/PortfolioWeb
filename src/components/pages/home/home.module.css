@@ -264,6 +264,9 @@
         flex-direction: column;
         gap: 20px;
     }
+    .linkBtn{
+        height: 160px;
+    }
     .overviewVisual{
         display: none;
     }
