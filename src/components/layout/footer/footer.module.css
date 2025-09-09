@@ -18,7 +18,7 @@
     .footerContainer{
         justify-content: center;
         text-align: center;
-        height: 70px;
+        height: 60px;
         position: fixed;
     }
     .footerContainer div:first-child{
