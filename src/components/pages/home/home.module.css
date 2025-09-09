@@ -1,3 +1,7 @@
+.wrapper{
+    width: 100%;
+}
+
 /* 메인 비주얼 */
 .introVisual{
     width: 100%;
@@ -219,8 +223,7 @@
 @media screen and (max-width: 730px) {
     .contentBox{
         padding: 0;
-        overflow: visible;
-        height: calc(100vh - 70px);
+        height: 100vh;
     }
     .content{
         padding: 0;
@@ -233,7 +236,7 @@
     }
     .mainContent{
         width: 100%;
-        padding: 50px 20px 0 20px;
+        padding: 50px 20px 0;
         gap: 30px;
         justify-content: flex-start;
     }
