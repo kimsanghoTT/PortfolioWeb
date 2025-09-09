@@ -223,7 +223,6 @@
 @media screen and (max-width: 730px) {
     .contentBox{
         padding: 0;
-        height: 100vh;
     }
     .content{
         padding: 0;
@@ -236,8 +235,8 @@
     }
     .mainContent{
         width: 100%;
-        padding: 50px 20px 0;
-        gap: 30px;
+        padding: 50px 20px 70px 20px;
+        gap: 20px;
         justify-content: flex-start;
     }
     .mainContent p{
@@ -265,10 +264,13 @@
     }
     .btnBox{
         flex-direction: column;
-        gap: 20px;
+        gap: 10px;
     }
     .linkBtn{
-        height: 160px;
+        height: 140px;
+    }
+    .linkBtn .btnTitle{
+        font-size: 32px;
     }
     .overviewVisual{
         display: none;

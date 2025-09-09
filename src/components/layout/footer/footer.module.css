@@ -19,7 +19,7 @@
         justify-content: center;
         text-align: center;
         height: 70px;
-        position: relative;
+        position: fixed;
     }
     .footerContainer div:first-child{
         display: none;
