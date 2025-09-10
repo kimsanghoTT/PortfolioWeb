@@ -1,5 +1,7 @@
 .wrapper{
     width: 100%;
+    position: relative;
+    transition: .5s ease;
 }
 
 /* 메인 비주얼 */
@@ -21,6 +23,10 @@
 .visualTextChar{
     display: inline-block;
     opacity: 0;
+}
+.introVisual canvas{
+    position: absolute;
+    inset: 0;
 }
 .scrollGuide{
   position: absolute;
@@ -104,9 +110,14 @@
     top: 0;
     left: 0;
 }
+.borderBox rect{
+    stroke: #555;
+    transition: .5s ease;
+}
 .overviewTextBox{
     flex: 1;
     pointer-events: none;
+    transition: .5s ease;
 }
 .overviewTextBox p {
     margin-left: 10px;
@@ -200,6 +211,31 @@
     z-index: 1;
 }
 
+/* 다크 모드 */
+:global(body.darkMode) .wrapper{
+    background-color: #222;
+}
+:global(body.darkMode) .borderBox rect{
+    stroke: #eee;
+}
+:global(body.darkMode) .overviewTextBox{
+    color: #eee;
+}
+:global(body.darkMode) .linkBtn{
+    border: #eee 2px solid;
+    color: #eee;
+}
+:global(body.darkMode) .linkBtn .btnDesc::after{
+    filter: brightness(9);
+}
+:global(body.darkMode) .linkBtn:hover {
+    background-color: #eee;
+    color: #222;
+}
+:global(body.darkMode) .linkBtn:hover .btnDesc::after{
+    filter: brightness(2);
+}
+
 @media screen and (min-width: 731px) and (max-width: 1350px) {
     .introTextBox{
         font-size: 80px;
@@ -254,6 +290,10 @@
         background: #222;
         height: 2px;
         width: var(--after-width);
+        transition: .5s ease;
+    }
+    :global(body.darkMode) .mainContent .sectionTitle::after{
+        background: #eee;
     }
     .mainContent .overviewTextBox{
         flex: 0;

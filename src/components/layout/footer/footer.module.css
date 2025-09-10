@@ -10,9 +10,20 @@
     bottom: 0;
     opacity: 0;
     color: #222;
+    transition: .5s ease;
 }
 .footerContainer a{
     display: block;
+    color: #222;
+    transition: .5s ease;
+}
+
+/*다크모드*/
+:global(body.darkMode) .footerContainer{
+    color: #eee;
+}
+:global(body.darkMode) .footerContainer a{
+    color: #eee;
 }
 @media screen and (max-width:730px) {
     .footerContainer{

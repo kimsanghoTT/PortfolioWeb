@@ -10,6 +10,7 @@
     opacity: 0;
     z-index: 1;
     background-color: #fff;
+    transition: .5s ease;
 }
 .logoBox{
     width: 160px;
@@ -23,6 +24,7 @@
     border-top: 1px solid #222;
     border-bottom: 3px solid #222;
     cursor: pointer;
+    transition: .5s ease;
 }
 .navList{
     display: flex;
@@ -35,7 +37,7 @@
 }
 .navItem a{
     position: relative;
-    transition: .3s;
+    transition: .5s;
     z-index: 3;
 }
 .navItem::before{
@@ -72,6 +74,7 @@
     background: url("/source/img/icons/m_menu.png");
     background-size: 30px 30px;
     cursor: pointer;
+    transition: .5s ease;
 }
 .m_navBox{
     position: absolute;
@@ -82,7 +85,7 @@
     background: #fff;
     width: 100vw;
     height: 100vh;
-    z-index: 3;
+    z-index: 4;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -125,18 +128,55 @@
     font-size: 60px;
     font-weight: 600;
 }
+.m_navItem a{
+    transition: .5s ease;
+}
 .m_navBoxLower{
     position: absolute;
     bottom: 40px;
     width: 100%;
     left: 0;
 }
+.m_navBoxLower a{
+    color: #222;
+    transition: .5s ease;
+}
+
+/*다크 모드*/
+:global(body.darkMode) .headerContainer{
+    background-color: #222;
+}
+:global(body.darkMode) .logo{
+    color: #eee;
+    border-color: #eee;
+}
+:global(body.darkMode) .navItem a{
+    color: #eee;
+}
+:global(body.darkMode) .navItem:hover a{
+    color: #222;
+}
+:global(body.darkMode) .navItem::before{
+    background-color: #eee;
+}
+:global(body.darkMode) .m_menuBtnBox .m_menuBtn{
+    filter: invert(9);
+}
+:global(body.darkMode) .m_navBox{
+    background-color: #222;
+}
+:global(body.darkMode) .m_navItem a{
+    color: #eee;
+}
+:global(body.darkMode) .m_navBoxLower a{
+    color: #eee;
+}
 
 @media screen and (max-width:730px) {
     .headerContainer{
         position: fixed;
         height: 50px;
-        padding: 10px 30px;
+        padding: 10px 20px;
     }
     .headerContainer .logoBox{
         display: none;

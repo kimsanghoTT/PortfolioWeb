@@ -26,7 +26,7 @@ const VisualParticle = () => {
         },
       },
       fullScreen:{
-        enable:true,
+        enable:false,
         zIndex: 0
       },
       fpsLimit: 120,

@@ -2,10 +2,39 @@
     width: 100%;
     height: auto;
     color: #222;
+    position: relative;
+    transition: .5s ease;
 }
 .container{
     width: 100%;
     padding: 0 150px;
+    position: relative;
+    z-index: 1;
+}
+.backImage{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+.lightBackground{
+    background: linear-gradient(to right, #fff 50%, transparent);
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    transition: .5s ease;
+}
+.darkBackground{
+    background: linear-gradient(to right, #222 50%, transparent);
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    transition: .5s ease;
 }
 
 /*상단*/
@@ -67,6 +96,7 @@
     font-family:'Aldrich';
     font-weight: 600;
     opacity: 0;
+    transition: .5s ease;
 }
 .listBlock{
     margin-top: 100px;
@@ -87,6 +117,7 @@
     width: 30px;
     height: 30px;
     opacity: 0;
+    transition: .5s ease;
 }
 .description .num01{
     background: url("/source/img/icons/list01.png") no-repeat center;
@@ -187,6 +218,7 @@
     font-size: 25px;
     flex-direction: column;
     gap: 30px;
+    transition: .5s ease;
 }
 .notFound a{
     font-size: 16px;
@@ -195,12 +227,36 @@
     border-radius: 10px;
     color: #222;
     padding: 20px 30px;
-    transition: .3s;
+    transition: .5s;
     cursor: pointer;
 }
 .notFound a:hover{
     background-color: #222;
     color: #fff;
+}
+
+/* 다크 모드 */
+:global(body.darkMode) .wrapper{
+    color: #eee;
+}
+:global(body.darkMode) .numIcon{
+    filter: invert(9);
+}
+:global(body.darkMode) .link a{
+    color: #ccc;
+}
+:global(body.darkMode) .notFound{
+    background: #222;
+    color: #eee;
+}
+:global(body.darkMode) .notFound a{
+    border: 1px solid #eee;
+    background-color: #222;
+    color: #eee;
+}
+:global(body.darkMode) .notFound a:hover{
+    background-color: #eee;
+    color: #222;
 }
 
 @media screen and (min-width:731px) and (max-width:1350px) {
@@ -212,6 +268,15 @@
 @media screen and (max-width:730px) {
     .wrapper{
         background: white !important;
+    }
+    .backImage{
+        display: none;
+    }
+    .lightBackground{
+        background: #fff;
+    }
+    .darkBackground{
+        background: #222;
     }
     .container{
         padding: 0 2%;
@@ -226,16 +291,7 @@
         height: 20px;
         opacity: 0;
     }
-    .description .num01{
-        background: url("/source/img/icons/list01.png") no-repeat center;
-        background-size: 20px 20px;
-    }
-    .usedSkills .num02{
-        background: url("/source/img/icons/list02.png") no-repeat center;
-        background-size: 20px 20px;
-    }
-    .references .num03{
-        background: url("/source/img/icons/list03.png") no-repeat center;
+    .description .num01, .usedSkills .num02, .references .num03{
         background-size: 20px 20px;
     }
     .listBlock{

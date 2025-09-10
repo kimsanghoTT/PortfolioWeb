@@ -4,10 +4,11 @@ import projectList from "../project/data.json";
 import styles from "./projectDetail.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import gsap from "gsap";
 import UsedSkills from "./sub_components/projectDetail_usedSkills";
 import References from "./sub_components/projectDetail_references";
+import DarkModeContext from "@/components/darkModeContext";
 
 interface Skills{
     name: string,
@@ -28,6 +29,7 @@ interface Project {
 }
 
 const ProjectDetail = () => {
+    const {darkMode} = useContext(DarkModeContext);
     const projectId = useParams().id;
     const project:Project | undefined = projectList.find(item => item.id === projectId);
     const router = useRouter();
@@ -68,7 +70,10 @@ const ProjectDetail = () => {
     }
 
     return(
-        <div className={styles.wrapper} style={{background: `linear-gradient(to right, #fff 40%, transparent), url(${project.image}) no-repeat center/cover`}}>
+        <div className={styles.wrapper}>
+            <div className={styles.lightBackground} style={{opacity: darkMode ? "0" : "1"}}></div>
+            <div className={styles.darkBackground} style={{opacity: darkMode ? "1" : "0"}}></div>
+            <div className={styles.backImage} style={{background: `url(${project.image}) no-repeat center/cover`}}></div>
             <section className={styles.container}>
                 <div className={styles.upperArea}>
                     <span className={styles.back} onClick={backToProject}><span className="hidden">뒤로가기</span></span>

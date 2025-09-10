@@ -1,3 +1,5 @@
+import { DarkModeProvider } from "@/components/darkModeContext";
+import DarkModeBtn from "@/components/layout/darkMode/darkMode_btn";
 import "./globals.css";
 
 export const metadata = {
@@ -11,7 +13,10 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   return (
     <html lang="ko">
       <body>
-        {children}
+        <DarkModeProvider>
+          {children}
+          <DarkModeBtn/>
+        </DarkModeProvider>
       </body>
     </html>
   );

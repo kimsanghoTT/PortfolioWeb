@@ -24,7 +24,7 @@ const HomeContents = ({ contentBoxRef }: Props) => {
                 preserveAspectRatio="none"
                 className={styles.borderBox}
                 >
-                    <rect ref={rectRef} x={0} y={0} width={100} height={98.5} fill="none" stroke="#555" strokeWidth={1.2}></rect>
+                    <rect ref={rectRef} x={0} y={0} width={100} height={98.5} fill="none" strokeWidth={1.2}></rect>
                 </svg>
                 <div className={styles.mainContent}>
                     <div className={styles.overviewTextBox}>
