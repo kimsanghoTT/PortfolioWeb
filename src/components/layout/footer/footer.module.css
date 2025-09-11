@@ -21,6 +21,7 @@
 /*다크모드*/
 :global(body.darkMode) .footerContainer{
     color: #eee;
+    border-top: 1px solid #eee;
 }
 :global(body.darkMode) .footerContainer a{
     color: #eee;

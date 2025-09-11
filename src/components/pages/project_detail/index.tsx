@@ -39,7 +39,8 @@ const ProjectDetail = () => {
             const projectDetailAnimation = gsap.timeline();
 
             projectDetailAnimation
-            .to(`.${styles.projectTitle}`,{opacity:1, duration:0.5})
+            .to(`.${styles.back}`, {opacity:1, duration:0.3})
+            .to(`.${styles.projectTitle}`,{opacity:1, duration:0.3}, "<")
             .fromTo(`.${styles.numIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
             .fromTo(`.${styles.title} .${styles.titleText}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
             .fromTo(`.${styles.description} p`, {y:50}, {opacity:1, y:0, duration:0.5, ease:"power2.inOut"})

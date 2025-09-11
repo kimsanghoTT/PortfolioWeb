@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 interface DarkModeType {
     darkMode:boolean;
@@ -15,10 +15,20 @@ const DarkModeContext = createContext<DarkModeType>({
 export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
     const [darkMode, setDarkMode] = useState<boolean>(false);
 
+    useEffect(() => {
+        const isDarkModeOn = localStorage.getItem("darkMode");
+        if(isDarkModeOn === "true"){
+            setDarkMode(true);
+            document.body.classList.add("darkMode");
+        }
+    },[])
+
     const handleChangeDarkMode = () => {
         setDarkMode(prev => {
-            if (!prev) document.body.classList.add("darkMode");
+            const mode = !prev;
+            if (mode) document.body.classList.add("darkMode");
             else document.body.classList.remove("darkMode");
+            localStorage.setItem("darkMode", String(mode));
             return !prev;
         });
     };

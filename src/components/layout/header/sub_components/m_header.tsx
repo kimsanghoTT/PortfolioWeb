@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useRef } from "react";
 import styles from "../header.module.css";
-import useMobileNavEvent from "../../hooks/useMobileNavEvent";
+import useMobileNavEvent from "../../_hooks/useMobileNavEvent";
+import Link from "next/link";
 
 type Props ={
     onHandleM_Menu: () => void
@@ -18,20 +19,20 @@ const M_HeaderNav = ({onHandleM_Menu, setM_handleMenu, m_handleMenu} : Props) =>
             <span className={styles.m_menuCloseBtn} onClick={onHandleM_Menu}><em className="hidden">모바일메뉴닫기</em></span>
             <div className={styles.m_navBoxUpper}> 
                 <h1 className={styles.m_logoBox}>
-                    <a href={"/home"}><span className={styles.logo}>KSH</span></a>
+                    <Link href={"/home"} onClick={onHandleM_Menu}><span className={styles.logo}>KSH</span></Link>
                     <span className="hidden">로고</span>
                 </h1>    
             </div>
             <nav className={styles.m_navList}>
                 <ul className={styles.m_navList}>
                     <li className={styles.m_navItem}>
-                        <a href={"/home"}>Home</a>
+                        <Link href={"/home"} onClick={onHandleM_Menu}>Home</Link>
                     </li>
                     <li className={styles.m_navItem}>
-                        <a href={"/project"}>Project</a>
+                        <Link href={"/project"} onClick={onHandleM_Menu}>Project</Link>
                     </li>
                     <li className={styles.m_navItem}>
-                        <a href={"/about"}>about</a>
+                        <Link href={"/about"} onClick={onHandleM_Menu}>about</Link>
                     </li>
                 </ul>
             </nav>

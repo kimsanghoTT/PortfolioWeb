@@ -15,10 +15,12 @@ const useHomeScrollEvent = ({ homeRef, contentBoxRef }: Props) => {
     const scrolling = useRef<boolean>(false);
     const headerRef = useRef<HTMLElement | null>(null);
     const footerRef = useRef<HTMLElement | null>(null);
+    const darkModeBtnRef = useRef<HTMLElement | null>(null);
     
     useEffect(() => {
         headerRef.current = document.getElementById("mainHeader");
         footerRef.current = document.getElementById("mainFooter");
+        darkModeBtnRef.current = document.getElementById("darkModeBtn");
         gsap.set(window, { scrollTo: 0 }); 
         ScrollTrigger.refresh();
     },[])
@@ -50,6 +52,7 @@ const useHomeScrollEvent = ({ homeRef, contentBoxRef }: Props) => {
         const home = homeRef.current;
         const header = headerRef.current;
         const footer = footerRef.current;
+        const darkModeBtn = darkModeBtnRef.current;
         const contentBox= contentBoxRef.current;
 
         if (!home || !header || !footer || !contentBox) {
@@ -59,11 +62,13 @@ const useHomeScrollEvent = ({ homeRef, contentBoxRef }: Props) => {
         const showLayout = () => {
             gsap.to(header, { yPercent: 0, opacity: 1, duration: 0.5, ease: 'power1.out'});
             gsap.to(footer, { yPercent: 0, opacity: 1, duration: 0.5, ease: 'power1.out'});
+            gsap.to(darkModeBtn, {yPercent: -190, duration: 0.5, ease: 'power1.out'});
         }
 
         const hideLayout = () => {
             gsap.to(header, { yPercent: -100, opacity: 0, duration: 0.5, ease: 'power1.out'});
             gsap.to(footer, { yPercent: 100, opacity: 0, duration: 0.5, ease: 'power1.out'});
+            gsap.to(darkModeBtn, {yPercent: -1, duration: 0.5, ease: 'power1.out'});
         }
 
         ScrollTrigger.create({

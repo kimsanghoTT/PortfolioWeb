@@ -1,6 +1,8 @@
 .wrapper{
     width: 100%;
     height: 100vh;
+    color: #222;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 .contentBox{
     padding: 80px 80px 0;
@@ -21,6 +23,7 @@
     letter-spacing: -2px;
     color: #222;
     margin-bottom: 10px;
+    transition: color .5s ease;
 }
 .sectionTitle p{
     opacity: 0;
@@ -36,6 +39,7 @@
     height: 2px;
     background: #222;
     width: var(--after-width); 
+    transition: background-color .5s ease;
 }
 .content{
     overflow: auto;
@@ -66,6 +70,7 @@
     width: 30px;
     height: 30px;
     opacity: 0;
+    transition: filter .5s ease;
 }
 .listBlock{
     margin-top: 80px;
@@ -147,7 +152,9 @@
 }
 .contact .contactBox{
     width: 100%;
-    border: 0px #222 solid;
+    border-color: #222;
+    border-width: 0px;
+    border-style: solid;
     height: 300px;
     border-radius: 20px;
     margin-top: 30px;
@@ -156,6 +163,7 @@
     align-items: center;
     justify-content: center;
     gap: 200px;
+    transition: border-width 0.5s ease, border-color 0.5s ease;
 }
 .contactBox p{
     font-size: 40px;
@@ -163,6 +171,7 @@
     color: #555;
     position: relative;
     opacity: 0;
+    transition: color .5s ease;
 }
 .contactBox p::before{
     content: '';
@@ -176,16 +185,48 @@
 }
 .contactBox .email::before{
     background: url("/source/img/icons/ico_email.png") no-repeat center/100px 100px;
+    transition: filter .5s ease;
 }
 .contactBox .git::before{
     background: url("/source/img/icons/ico_git.png") no-repeat center/100px 100px;
+    transition: filter .5s ease;
 }
 .contactBox a{
     font-size: 20px;
     opacity: 0;
+    transition: color .5s ease;
 }
 .contactBox a:hover{
     text-decoration: underline;
+}
+/* 다크 모드 */
+:global(body.darkMode) .wrapper{
+    background-color: #222;
+    color: #eee;
+}
+:global(body.darkMode) .title{
+    color: #eee;
+}
+:global(body.darkMode) .sectionTitle::after{
+    background: #eee;
+}
+:global(body.darkMode) .numIcon{
+    filter: invert(9);
+}
+:global(body.darkMode) .content::-webkit-scrollbar-thumb{
+    background: rgba(255, 255, 255, 0.8);
+}
+:global(body.darkMode) .contactBox{
+    border-color: #eee;
+}
+:global(body.darkMode) .contactBox p{
+    color: #ccc;
+}
+:global(body.darkMode) .contactBox a{
+    color: #aaa;
+}
+:global(body.darkMode) .contactBox .email::before, :global(body.darkMode) .contactBox .git::before{
+    filter: invert(10);
 }
 @media screen and (min-width: 730px) and (max-width: 1350px){
     .title{

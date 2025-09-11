@@ -39,7 +39,7 @@ const usePageAnimation = ({contentRef, styles}: Props) => {
                 .fromTo(`.${styles.certificate} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.2}, "<")
                 .fromTo(`.${styles.skillListTitle}`, {y:50}, {y:0, opacity:1, duration:0.3}, "<")
                 .fromTo(`.${styles.skills} li`, {y:50}, {y:0, opacity:1, duration:0.3}, "<")
-                .to(`.${styles.contactBox}`, {border:1, duration:0.3}, "<")
+                .to(`.${styles.contactBox}`, {borderWidth:1, duration:0.3}, "<")
                 .fromTo([`.${styles.contactBox} .${styles.email}`, `.${styles.contactBox} .${styles.git}`], 
                     {y:50}, {y:0, opacity:1, duration:0.3})
                 .fromTo(`.${styles.contactBox} a`, {y:50}, {y:0, opacity:1, duration:0.3})

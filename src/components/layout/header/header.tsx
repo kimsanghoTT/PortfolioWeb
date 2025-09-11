@@ -1,9 +1,10 @@
 "use client"
 
 import styles from "./header.module.css";
-import useLayoutAnimation from "../hooks/useScrollEvent";
+import useLayoutAnimation from "../_hooks/useScrollEvent";
 import { useState } from "react";
 import M_HeaderNav from "./sub_components/m_header";
+import Link from "next/link";
 
 const Header = () => {
     useLayoutAnimation();
@@ -17,19 +18,19 @@ const Header = () => {
     return (
         <header id="mainHeader" className={styles.headerContainer}>
             <h1 className={styles.logoBox}>
-                <a href={"/home"}><span className={styles.logo}>KSH</span></a>
+                <Link href={"/home"}><span className={styles.logo}>KSH</span></Link>
                 <span className="hidden">로고</span>
             </h1>
             <nav className={styles.navBox}>
                 <ul className={styles.navList}>
                     <li className={styles.navItem}>
-                        <a href={"/home"}>Home</a>
+                        <Link href={"/home"}>Home</Link>
                     </li>
                     <li className={styles.navItem}>
-                        <a href={"/project"}>Project</a>
+                        <Link href={"/project"}>Project</Link>
                     </li>
                     <li className={styles.navItem}>
-                        <a href={"/about"}>about</a>
+                        <Link href={"/about"}>about</Link>
                     </li>
                 </ul>
             </nav>

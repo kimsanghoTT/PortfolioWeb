@@ -3,6 +3,7 @@ import { useContext, useEffect, useRef } from "react";
 import styles from "./darkMode_btn.module.css";
 import { usePathname } from "next/navigation";
 import DarkModeContext from "@/components/darkModeContext";
+import gsap from "gsap";
 
 const DarkModeBtn = () => {
     const {darkMode, handleChangeDarkMode} = useContext(DarkModeContext);
@@ -18,8 +19,12 @@ const DarkModeBtn = () => {
         }
     },[darkMode])
 
+    useEffect(() => {
+        if(!isHome) gsap.to(darkModeBtn.current, {yPercent:-1})
+    },[isHome])
+
     return(
-        <div className={styles.darkModeBtnContainer} style={isHome ? {bottom: "15%"} : {}} ref={darkModeBtn}>
+        <div id="darkModeBtn" className={styles.darkModeBtnContainer} ref={darkModeBtn}>
             <button onClick={handleChangeDarkMode} className={styles.darkModeBtn}>
                 <span className={styles.modeDisplay}></span>
             </button>

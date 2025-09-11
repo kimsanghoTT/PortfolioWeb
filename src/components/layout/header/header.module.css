@@ -10,7 +10,7 @@
     opacity: 0;
     z-index: 1;
     background-color: #fff;
-    transition: .5s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 .logoBox{
     width: 160px;
@@ -110,6 +110,7 @@
     top: 20px;
     z-index: 2;
     cursor: pointer;
+    transition: filter .5s ease;
 }
 .m_navBoxUpper{
     width: 100%;
@@ -170,6 +171,9 @@
 }
 :global(body.darkMode) .m_navBoxLower a{
     color: #eee;
+}
+:global(body.darkMode) .m_menuCloseBtn{
+    filter: invert(9);
 }
 
 @media screen and (max-width:730px) {
