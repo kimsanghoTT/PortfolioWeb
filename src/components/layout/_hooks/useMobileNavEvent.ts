@@ -3,12 +3,12 @@ import styles from "../header/header.module.css";
 import gsap from "gsap";
 
 interface Props{
-        setM_handleMenu: Dispatch<SetStateAction<boolean>>
-        m_handleMenu: boolean
-        m_navBoxRef:RefObject<HTMLDivElement | null>;
+    setM_handleMenu: Dispatch<SetStateAction<boolean>>;
+    m_handleMenu: boolean;
+    m_navBoxRef:RefObject<HTMLDivElement | null>;
 }
 
-const MobileNavEvent = ({setM_handleMenu, m_handleMenu, m_navBoxRef}: Props) => {
+const useMobileNavEvent = ({setM_handleMenu, m_handleMenu, m_navBoxRef}: Props) => {
 
     // 뷰포트 변화 감지해서 모바일 메뉴 닫기
     useEffect(() => {
@@ -65,4 +65,4 @@ const MobileNavEvent = ({setM_handleMenu, m_handleMenu, m_navBoxRef}: Props) => 
         }
     },[blockScroll])
 }
-export default MobileNavEvent;
+export default useMobileNavEvent;

@@ -1,7 +1,7 @@
 "use client"
 
 import styles from "./header.module.css";
-import useLayoutAnimation from "../_hooks/useScrollEvent";
+import useLayoutAnimation from "../_hooks/useLayoutAnimation";
 import { useState } from "react";
 import M_HeaderNav from "./sub_components/m_header";
 import Link from "next/link";
@@ -42,8 +42,6 @@ const Header = () => {
                 setM_handleMenu={setM_handleMenu}
                 m_handleMenu={m_handleMenu}
             />
-
-
         </header>
     )
 }

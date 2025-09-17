@@ -10,7 +10,7 @@
     bottom: 0;
     opacity: 0;
     color: #222;
-    transition: .5s ease;
+    transition: color .5s ease, border-top .5s ease;
 }
 .footerContainer a{
     display: block;

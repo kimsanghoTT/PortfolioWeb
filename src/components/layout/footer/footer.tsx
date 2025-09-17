@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import useLayoutAnimation from "../_hooks/useScrollEvent";
+import useLayoutAnimation from "../_hooks/useLayoutAnimation";
 import styles from "./footer.module.css";
 
 const Footer = () => {
