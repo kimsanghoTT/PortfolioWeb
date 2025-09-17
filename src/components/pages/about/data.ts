@@ -22,10 +22,12 @@ export const skills = {
     { name: "GSAP", image: "/source/img/icons/ico_gsap.png" },
     { name: "Ant Design", image: "/source/img/icons/ico_ant-design.png" },
     { name: "Swiper", image: "/source/img/icons/ico_swiper.png" },
-    { name: "tsParticles", image: "/source/img/icons/ico_tsparticle.png" }
+    { name: "tsParticles", image: "/source/img/icons/ico_tsparticle.png" },
+    { name: "Quill", image: "/source/img/icons/ico_quill.png"}
   ],
   databases: [
     { name: "Oracle", image: "/source/img/icons/ico_oracledb.png" },
-    { name: "MySQL", image: "/source/img/icons/ico_mysql.png" }
+    { name: "MySQL", image: "/source/img/icons/ico_mysql.png" },
+    { "name": "indexedDB", "image": "/source/img/icons/ico_indexedDB.png"}
   ]
 };
