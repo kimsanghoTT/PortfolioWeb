@@ -1,6 +1,6 @@
 "use client"
 
-import { RefObject, useRef } from "react";
+import { RefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -16,9 +16,11 @@ const useHomeScrollEvent = ({ homeRef, contentBoxRef }: Props) => {
     const scrolling = useRef<boolean>(false);
     
 
-    if ('scrollRestoration' in window.history) {
-        window.history.scrollRestoration = 'manual';
-    }
+    useEffect(() => {
+        if ('scrollRestoration' in window.history) {
+            window.history.scrollRestoration = 'manual';
+        }
+    }, []);
 
     useGSAP(() => {
         if(!homeRef.current || !contentBoxRef.current) return;
