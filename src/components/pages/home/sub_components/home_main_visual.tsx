@@ -1,12 +1,12 @@
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import styles from '../home.module.css';
 import useIntroVisual from '../../_hooks/useIntroVisual';
 import VisualParticle from './home_visual_particle';
 
 const IntroVisual = () => {
     const introRef = useRef<HTMLElement | null>(null);
-    const uppertxt = "HELLO, WORLD!";
-    const lowertxt = "KSH'S PORTFOLIO"
+    const upperText = useMemo(() => "HELLO, WORLD!".split(""), []);
+    const lowerText = useMemo(() => "KSH'S PORTFOLIO".split(""), []);
 
     useIntroVisual({introRef});
 
@@ -16,14 +16,14 @@ const IntroVisual = () => {
             <VisualParticle/>
             <div className={styles.introTextBox}>
                 <p>
-                    {uppertxt.split("").map((char, index) => (
+                    {upperText.map((char, index) => (
                         <span key={`hello-${index}`} className={styles.visualTextChar}>
                             {char === ' ' ? '\u00A0' : char}
                         </span>
                     ))}
                 </p>
                 <p>
-                    {lowertxt.split("").map((char, index) => (
+                    {lowerText.map((char, index) => (
                         <span key={`portfolio-${index}`} className={styles.visualTextChar}>
                             {char === ' ' ? '\u00A0' : char}
                         </span>

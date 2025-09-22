@@ -1,4 +1,4 @@
-import { Dispatch, RefObject, SetStateAction, useCallback, useEffect } from "react";
+import { Dispatch, RefObject, SetStateAction, useEffect } from "react";
 import styles from "../header/header.module.css";
 import gsap from "gsap";
 
@@ -28,34 +28,35 @@ const useMobileNavEvent = ({setM_handleMenu, m_handleMenu, m_navBoxRef}: Props) 
     }, [setM_handleMenu]);
 
     useEffect(() => {
-        if(m_handleMenu){
+        if(!m_handleMenu) return;
+            const animationContext = gsap.context(() => {
+                gsap.set(`.${styles.m_navBox} nav li`, {opacity:0, x:100});
+                gsap.set(`.${styles.m_navBox} .${styles.m_logoBox}`, {opacity:0})
+                gsap.set(`.${styles.m_navBox} .${styles.m_navBoxLower} a`, {opacity:0})
 
-            gsap.set(`.${styles.m_navBox} nav li`, {opacity:0, x:100});
-            gsap.set(`.${styles.m_navBox} .${styles.m_logoBox}`, {opacity:0})
-            gsap.set(`.${styles.m_navBox} .${styles.m_navBoxLower} a`, {opacity:0})
 
+                gsap.to(`.${styles.m_navBox}.${styles.active} nav li`, {opacity:1, x:0, duration:0.3, stagger:0.2});
+                gsap.to(`.${styles.m_navBox}.${styles.active} .${styles.m_logoBox}`, {opacity:1, duration:1})
+                gsap.to(`.${styles.m_navBox}.${styles.active} .${styles.m_navBoxLower} a`, {opacity:1, stagger:0.1, duration:0.3})
+            }, m_navBoxRef)
 
-            gsap.to(`.${styles.m_navBox}.${styles.active} nav li`, {opacity:1, x:0, duration:0.3, stagger:0.2});
-            gsap.to(`.${styles.m_navBox}.${styles.active} .${styles.m_logoBox}`, {opacity:1, duration:1})
-            gsap.to(`.${styles.m_navBox}.${styles.active} .${styles.m_navBoxLower} a`, {opacity:1, stagger:0.1, duration:0.3})
-        }
-    },[m_handleMenu])
-
-    const blockScroll = useCallback((e: WheelEvent | TouchEvent) => {
-        if(m_handleMenu){
-            e.preventDefault();
-            e.stopPropagation();
-        }
-    },[m_handleMenu]);
+            return () => animationContext.revert();
+    },[m_handleMenu, m_navBoxRef])
 
     useEffect(() => {
-        if (!m_handleMenu) return;
-
         const navBox = m_navBoxRef?.current;
-        if(navBox){
-            navBox.addEventListener("wheel", blockScroll, {passive: false});
-            navBox.addEventListener("touchmove", blockScroll, {passive:false});
-        }
+
+        if (!m_handleMenu || !navBox) return;
+
+        const blockScroll = (e: WheelEvent | TouchEvent) => {
+            if(m_handleMenu){
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        };
+
+        navBox.addEventListener("wheel", blockScroll, {passive: false});
+        navBox.addEventListener("touchmove", blockScroll, {passive:false});
 
         return () => {
             if(navBox) {
@@ -63,6 +64,6 @@ const useMobileNavEvent = ({setM_handleMenu, m_handleMenu, m_navBoxRef}: Props) 
                 navBox.removeEventListener("touchmove", blockScroll);
             }
         }
-    },[blockScroll])
+    },[m_handleMenu, m_navBoxRef])
 }
 export default useMobileNavEvent;

@@ -1,9 +1,10 @@
 "use client"
 
-import { RefObject, useCallback, useEffect, useRef } from "react";
+import { RefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 interface Props {
@@ -13,80 +14,78 @@ interface Props {
 
 const useHomeScrollEvent = ({ homeRef, contentBoxRef }: Props) => {
     const scrolling = useRef<boolean>(false);
-    const headerRef = useRef<HTMLElement | null>(null);
-    const footerRef = useRef<HTMLElement | null>(null);
-    const darkModeBtnRef = useRef<HTMLElement | null>(null);
     
-    useEffect(() => {
-        headerRef.current = document.getElementById("mainHeader");
-        footerRef.current = document.getElementById("mainFooter");
-        darkModeBtnRef.current = document.getElementById("darkModeBtn");
-        gsap.set(window, { scrollTo: 0 }); 
+
+    if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+    }
+
+    useGSAP(() => {
+        if(!homeRef.current || !contentBoxRef.current) return;
         ScrollTrigger.refresh();
-    },[])
 
-    const wheelingScroll = useCallback((e:WheelEvent) => {
+        const animationContext = gsap.context(() => {
 
-        if(scrolling.current){
-            e.preventDefault();
-            return;
-        }
+            const header = document.getElementById("mainHeader");
+            const footer = document.getElementById("mainFooter");
+            const darkModeBtn = document.getElementById("darkModeBtn");
 
-        e.preventDefault();
-        scrolling.current = true;
+            if(!header || !footer || !darkModeBtn) return;
 
-        const direction = e.deltaY > 0 ? 1 : -1;
-        const scrollRange = direction === 1 ? window.innerHeight : 0;
-
-        gsap.to(window, {
-            scrollTo: {y:scrollRange, autoKill: false},
-            duration: 1,
-            ease: "power2.inOut",
-            onComplete: () => {
-                scrolling.current = false;
+            const showLayout = () => {
+                gsap.to(header, { yPercent: 0, opacity: 1, duration: 0.5, ease: 'power1.out'});
+                gsap.to(footer, { yPercent: 0, opacity: 1, duration: 0.5, ease: 'power1.out'});
+                gsap.to(darkModeBtn, {yPercent: -190, duration: 0.5, ease: 'power1.out'});
             }
+
+            const hideLayout = () => {
+                gsap.to(header, { yPercent: -100, opacity: 0, duration: 0.5, ease: 'power1.out'});
+                gsap.to(footer, { yPercent: 100, opacity: 0, duration: 0.5, ease: 'power1.out'});
+                gsap.to(darkModeBtn, {yPercent: -1, duration: 0.5, ease: 'power1.out'});
+            }
+
+            ScrollTrigger.create({
+                trigger: contentBoxRef.current,
+                start: "top 1%",
+                onEnter: () => showLayout(),
+                onLeaveBack: () => hideLayout()
+            })
+
+            const wheelingScroll = (e:WheelEvent) => {
+
+                if(scrolling.current){
+                    e.preventDefault();
+                    return;
+                }
+
+                e.preventDefault();
+                scrolling.current = true;
+
+                const direction = e.deltaY > 0 ? 1 : -1;
+                const scrollRange = direction === 1 ? window.innerHeight : 0;
+
+                gsap.to(window, {
+                    scrollTo: {y:scrollRange, autoKill: false},
+                    duration: 1,
+                    ease: "power2.inOut",
+                    overwrite: "auto",
+                    onComplete: () => {
+                        scrolling.current = false;
+                    }
+                })
+            }
+
+            homeRef.current?.addEventListener("wheel", wheelingScroll, { passive: false });
+
+            return () => {
+
+                homeRef.current?.removeEventListener("wheel", wheelingScroll);
+                ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            }
+
         })
-    },[])
 
-    useEffect(() => {
-        const home = homeRef.current;
-        const header = headerRef.current;
-        const footer = footerRef.current;
-        const darkModeBtn = darkModeBtnRef.current;
-        const contentBox= contentBoxRef.current;
-
-        if (!home || !header || !footer || !contentBox) {
-            return; 
-        }
-
-        const showLayout = () => {
-            gsap.to(header, { yPercent: 0, opacity: 1, duration: 0.5, ease: 'power1.out'});
-            gsap.to(footer, { yPercent: 0, opacity: 1, duration: 0.5, ease: 'power1.out'});
-            gsap.to(darkModeBtn, {yPercent: -190, duration: 0.5, ease: 'power1.out'});
-        }
-
-        const hideLayout = () => {
-            gsap.to(header, { yPercent: -100, opacity: 0, duration: 0.5, ease: 'power1.out'});
-            gsap.to(footer, { yPercent: 100, opacity: 0, duration: 0.5, ease: 'power1.out'});
-            gsap.to(darkModeBtn, {yPercent: -1, duration: 0.5, ease: 'power1.out'});
-        }
-
-        ScrollTrigger.create({
-            trigger: contentBox,
-            start: "top 1%",
-            onEnter: () => showLayout(),
-            onLeaveBack: () => hideLayout()
-        })
-
-        home.addEventListener("wheel", wheelingScroll, { passive: false });
-
-        return () => {
-
-            home.removeEventListener("wheel", wheelingScroll);
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        }
-
-    },[contentBoxRef, homeRef, wheelingScroll]);
-
+        return () => animationContext.revert();
+    },{scope:homeRef})
 }
 export default useHomeScrollEvent;

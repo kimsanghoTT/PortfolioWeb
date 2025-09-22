@@ -1,5 +1,5 @@
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useLayoutEffect } from "react";
 
 interface Props {
     contentRef: React.RefObject<HTMLDivElement | null>;
@@ -8,12 +8,11 @@ interface Props {
 
 const usePageAnimation = ({contentRef, styles}: Props) => {
 
-    useLayoutEffect(() => {
-        const animationTimeout = setTimeout(() => {
-            const triggerElement = contentRef.current;
-            if (!triggerElement) return;
+    useGSAP(() => {
+        if (!contentRef.current) return;
 
-            const sectionTitleTextChars = triggerElement.querySelectorAll(`.${styles.sectionTitleTextChar}`);
+        const animationContext = gsap.context((self) => {
+            const sectionTitleTextChars = self.selector?.(`.${styles.sectionTitleTextChar}`);
             if(sectionTitleTextChars.length === 0) return;
 
             const animationTimeLine = gsap.timeline();
@@ -42,12 +41,11 @@ const usePageAnimation = ({contentRef, styles}: Props) => {
                 .to(`.${styles.contactBox}`, {borderWidth:1, duration:0.3}, "<")
                 .fromTo([`.${styles.contactBox} .${styles.email}`, `.${styles.contactBox} .${styles.git}`], 
                     {y:50}, {y:0, opacity:1, duration:0.3})
-                .fromTo(`.${styles.contactBox} a`, {y:50}, {y:0, opacity:1, duration:0.3})
             }
+            
+        }, contentRef.current)
 
-        },10)
-
-        return () => clearTimeout(animationTimeout);
-    },[contentRef])
+        return () => animationContext.revert();
+    },{scope: contentRef})
 }
 export default usePageAnimation;

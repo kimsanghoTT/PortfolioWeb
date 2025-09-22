@@ -4,11 +4,12 @@ import projectList from "../project/data.json";
 import styles from "./projectDetail.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useContext, useLayoutEffect } from "react";
+import { useContext, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import UsedSkills from "./sub_components/projectDetail_usedSkills";
 import References from "./sub_components/projectDetail_references";
 import DarkModeContext from "@/components/darkModeContext";
+import { useGSAP } from "@gsap/react";
 
 interface Skills{
     name: string,
@@ -34,28 +35,26 @@ const ProjectDetail = () => {
     const project:Project | undefined = projectList.find(item => item.id === projectId);
     const router = useRouter();
 
-    useLayoutEffect(() => {
-        const animationTimeOut = setTimeout(() => {
-            const projectDetailAnimation = gsap.timeline();
+    const containerRef = useRef<HTMLDivElement>(null);
 
-            projectDetailAnimation
-            .to(`.${styles.back}`, {opacity:1, duration:0.3})
-            .to(`.${styles.projectTitle}`,{opacity:1, duration:0.3}, "<")
-            .fromTo(`.${styles.numIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
-            .fromTo(`.${styles.title} .${styles.titleText}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
-            .fromTo(`.${styles.description} p`, {y:50}, {opacity:1, y:0, duration:0.5, ease:"power2.inOut"})
-            .fromTo(`.${styles.language}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
-            .fromTo(`.${styles.framework}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
-            .fromTo(`.${styles.db}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
-            .fromTo(`.${styles.languages} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
-            .fromTo(`.${styles.frameworks} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
-            .fromTo(`.${styles.dbs} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
-            .fromTo(`.${styles.references} .${styles.subtitle}`, {y:50}, {y:0, opacity:1, duration:0.5, ease:"power2.inOut", stagger:0.3})
-            .fromTo(`.${styles.link} a`, {x:50}, {x:0, opacity:1, duration:0.5, stagger:0.2, ease:"power2.inOut"}, "<")
-        }, 10)
+    useGSAP(() => {
+        const projectDetailAnimation = gsap.timeline();
 
-        return () => clearTimeout(animationTimeOut);
-    },[])
+        projectDetailAnimation
+        .to(`.${styles.back}`, {opacity:1, duration:0.3})
+        .to(`.${styles.projectTitle}`,{opacity:1, duration:0.3}, "<")
+        .fromTo(`.${styles.numIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
+        .fromTo(`.${styles.title} .${styles.titleText}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
+        .fromTo(`.${styles.description} p`, {y:50}, {opacity:1, y:0, duration:0.5, ease:"power2.inOut"})
+        .fromTo(`.${styles.language}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
+        .fromTo(`.${styles.framework}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
+        .fromTo(`.${styles.db}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
+        .fromTo(`.${styles.languages} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
+        .fromTo(`.${styles.frameworks} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
+        .fromTo(`.${styles.dbs} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
+        .fromTo(`.${styles.references} .${styles.subtitle}`, {y:50}, {y:0, opacity:1, duration:0.5, ease:"power2.inOut", stagger:0.3})
+        .fromTo(`.${styles.link} a`, {x:50}, {x:0, opacity:1, duration:0.5, stagger:0.2, ease:"power2.inOut"}, "<")      
+    },{scope:containerRef})
 
     const backToProject = () => {
         router.back();
@@ -75,7 +74,7 @@ const ProjectDetail = () => {
             <div className={styles.lightBackground} style={{opacity: darkMode ? "0" : "1"}}></div>
             <div className={styles.darkBackground} style={{opacity: darkMode ? "1" : "0"}}></div>
             <div className={styles.backImage} style={{background: `url(${project.image}) no-repeat center/cover`}}></div>
-            <section className={styles.container}>
+            <section className={styles.container} ref={containerRef}>
                 <div className={styles.upperArea}>
                     <span className={styles.back} onClick={backToProject}><span className="hidden">뒤로가기</span></span>
                 </div>

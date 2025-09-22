@@ -1,4 +1,4 @@
-import { RefObject, useRef } from "react";
+import { RefObject, useMemo, useRef } from "react";
 import styles from "../home.module.css";
 import useHomeContentAnimation from "../../_hooks/useHomeContentAnimation";
 import Link from "next/link";
@@ -9,7 +9,7 @@ interface Props {
 
 const HomeContents = ({ contentBoxRef }: Props) => {
     const rectRef = useRef<SVGRectElement | null>(null);
-    const titleText = "OVERVIEW";
+    const titleText = useMemo(() => "OVERVIEW".split(""),[]);
 
     useHomeContentAnimation({contentBoxRef, rectRef});
 
@@ -29,7 +29,7 @@ const HomeContents = ({ contentBoxRef }: Props) => {
                 <div className={styles.mainContent}>
                     <div className={styles.overviewTextBox}>
                         <h2 className={styles.sectionTitle}>
-                            {titleText.split("").map ((char, index) => (
+                            {titleText.map ((char, index) => (
                                 <span key={index} className={styles.sectionTitleTextChar}>{char}</span>
                             ))}
                         </h2>
