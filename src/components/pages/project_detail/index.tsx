@@ -4,7 +4,7 @@ import projectList from "../project/data.json";
 import styles from "./projectDetail.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useContext, useLayoutEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import gsap from "gsap";
 import UsedSkills from "./sub_components/projectDetail_usedSkills";
 import References from "./sub_components/projectDetail_references";
