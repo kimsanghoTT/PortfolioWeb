@@ -1,17 +1,19 @@
 import styles from "../project.module.css";
 import Projects from "../data.json"
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
-import { useGSAP } from "@gsap/react";
 import { useEffect, useRef, useState } from "react";
-gsap.registerPlugin(ScrollTrigger);
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Mousewheel } from "swiper/modules";
+import ProjectCard from "./project_card";
 
 interface Project {
     id: string;
     type: string;
+    summary:string;
     title: string;
     description: string;
+    video:string;
     image: string;
     languages: { name: string; image: string }[];
     frameworks: { name: string; image: string }[];
@@ -21,11 +23,12 @@ interface Project {
     link: string;
 }
 
-const ProjectBoard = () => {
+const ProjectBoard = ({filteredItems}: Props) => {
     const boardRef = useRef<HTMLDivElement | null>(null);
-    const cardListRef = useRef<HTMLDivElement | null>(null);
+    const cardListRef = useRef<SwiperRef | null>(null);
     const [filteredItems, setFilteredItems] = useState<Project[]>(Projects);
     const [filterCondition, setFilterCondition] = useState<"All" | "Team" | "Single">("All");
+    const [flippedCardId, setFlippedCardId] = useState<string[]>([]);
 
     useEffect(() => {
         let currentFilteredItems = Projects;
@@ -35,21 +38,16 @@ const ProjectBoard = () => {
         setFilteredItems(currentFilteredItems);
     },[filterCondition])
 
-    useGSAP(() => {
-        if(!boardRef.current || !cardListRef.current) return;
-
-        const scrollLength = cardListRef.current.scrollWidth - cardListRef.current.clientWidth;
-
-        gsap.to(cardListRef.current, {x:-scrollLength, ease:"none", scrollTrigger:{
-            trigger: boardRef.current,
-            start: "top-=80 top",
-            end: () => `+=${scrollLength}`,
-            pin: true,
-            scrub: 1,
-            anticipatePin: 1
-        }})
-
-    },{scope:boardRef})
+    const handleFlipCard = (id:string) => {
+        setFlippedCardId(prev => {
+            if(prev.includes(id)){
+                return prev.filter(cardId => cardId !== id);
+            }
+            else{
+                return [...prev, id];
+            }
+        })
+    }
 
     return(
         <div className={styles.projectBoard} ref={boardRef}>
@@ -64,13 +62,13 @@ const ProjectBoard = () => {
                     </button>
                 ))}
             </div>
-            <div className={styles.projectCardList} ref={cardListRef}>
+            <Swiper className={styles.projectCardList} ref={cardListRef} modules={[Mousewheel]} spaceBetween={20} slidesPerView={"auto"} mousewheel={true}>
                 {filteredItems && filteredItems.map(project => (
-                    <div key={project.id} className={styles.projectCard}>
-                        <Link href={`/project_detail/${project.id}`}>{project.title}</Link>
-                    </div>
+                    <SwiperSlide key={project.id} className={styles.projectCard}>
+                        <ProjectCard project={project} flippedCardId={flippedCardId} handleFlipCard={handleFlipCard}/>
+                    </SwiperSlide>
                 ))}
-            </div>
+            </Swiper>
         </div>
     )
 }
