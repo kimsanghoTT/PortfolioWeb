@@ -25,7 +25,7 @@ const useHomeContentAnimation = ({contentBoxRef, rectRef} : Props) => {
             const animationTimeline = gsap.timeline({paused: true});
 
             if(deskTopView && rect){
-                const rectLength = (rect.width.baseVal.value + rect.height.baseVal.value) * 2;
+                const rectLength = (rect.width.baseVal.value + rect.height.baseVal.value) * 2 + 3;
                 gsap.set(rect, { strokeDasharray: rectLength, strokeDashoffset: rectLength });
 
                 animationTimeline.to(rect, {strokeDashoffset: 0, duration: 2, ease: "power2.inOut"});

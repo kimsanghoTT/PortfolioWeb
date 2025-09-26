@@ -151,7 +151,8 @@
     margin-bottom: 100px
 }
 .contact .contactBox{
-    width: 100%;
+    width: 70%;
+    margin: 0 auto;
     border-color: #222;
     border-width: 0px;
     border-style: solid;

@@ -41,6 +41,7 @@ const usePageAnimation = ({contentRef, styles}: Props) => {
                 .to(`.${styles.contactBox}`, {borderWidth:1, duration:0.3}, "<")
                 .fromTo([`.${styles.contactBox} .${styles.email}`, `.${styles.contactBox} .${styles.git}`], 
                     {y:50}, {y:0, opacity:1, duration:0.3})
+                .to(`.${styles.contactBox} a`, {opacity:1, duration:0.3})
             }
             
         }, contentRef.current)

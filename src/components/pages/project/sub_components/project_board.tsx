@@ -1,42 +1,76 @@
 import styles from "../project.module.css";
 import Projects from "../data.json"
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+gsap.registerPlugin(ScrollTrigger);
+
+interface Project {
+    id: string;
+    type: string;
+    title: string;
+    description: string;
+    image: string;
+    languages: { name: string; image: string }[];
+    frameworks: { name: string; image: string }[];
+    DB: { name: string; image: string }[];
+    git: string;
+    notion: string;
+    link: string;
+}
 
 const ProjectBoard = () => {
-    const boardRef = useRef<HTMLDivElement>(null);
+    const boardRef = useRef<HTMLDivElement | null>(null);
+    const cardListRef = useRef<HTMLDivElement | null>(null);
+    const [filteredItems, setFilteredItems] = useState<Project[]>(Projects);
+    const [filterCondition, setFilterCondition] = useState<"All" | "Team" | "Single">("All");
+
+    useEffect(() => {
+        let currentFilteredItems = Projects;
+
+        if(filterCondition !== "All") currentFilteredItems = currentFilteredItems.filter(item => item.type === filterCondition);
+
+        setFilteredItems(currentFilteredItems);
+    },[filterCondition])
 
     useGSAP(() => {
-        const cards = gsap.utils.toArray<HTMLAnchorElement>(`.${styles.projectCard}`);
-        cards.forEach(card => {
-            const mouseEnterAnimation = () => gsap.to(card, { scale: 1.05, filter: "grayscale(0.8)", duration: 0.5 });
-            const mouseLeaveAnimation = () => gsap.to(card, {scale: 1, filter: "grayscale(0)", duration: 0.5});
-            card.addEventListener("mouseenter", mouseEnterAnimation);
-            card.addEventListener("mouseleave", mouseLeaveAnimation);
+        if(!boardRef.current || !cardListRef.current) return;
 
-            return () => {
-                card.removeEventListener("mouseenter", mouseEnterAnimation);
-                card.removeEventListener("mouseleave", mouseLeaveAnimation);
-            }
-        })
+        const scrollLength = cardListRef.current.scrollWidth - cardListRef.current.clientWidth;
+
+        gsap.to(cardListRef.current, {x:-scrollLength, ease:"none", scrollTrigger:{
+            trigger: boardRef.current,
+            start: "top-=80 top",
+            end: () => `+=${scrollLength}`,
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1
+        }})
+
     },{scope:boardRef})
 
     return(
         <div className={styles.projectBoard} ref={boardRef}>
-            {Projects.map(project => (
-            <Link 
-                href={`/project_detail/${project.id}`} 
-                key={project.id} 
-                className={styles.projectCard} 
-                style={{backgroundImage: `url(${project.image})`}}
-            >
-                <div className={styles.hoverBox}>
-                    <span className={styles.text}>{project.title}</span>
-                </div>
-            </Link>
-            ))}
+            <div className={styles.filterBox}>
+                {["All", "Team", "Single"].map(condition => (
+                    <button 
+                        key={condition} 
+                        className={`${styles.filterCondition} ${filterCondition === condition ? styles.active : ""}`}
+                        onClick={() => setFilterCondition(condition as typeof filterCondition)}
+                    >
+                        {condition}
+                    </button>
+                ))}
+            </div>
+            <div className={styles.projectCardList} ref={cardListRef}>
+                {filteredItems && filteredItems.map(project => (
+                    <div key={project.id} className={styles.projectCard}>
+                        <Link href={`/project_detail/${project.id}`}>{project.title}</Link>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

@@ -1,13 +1,13 @@
 .wrapper{
     width: 100%;
-    height: 100vh;
+    height: auto;
     transition: .5s ease;
 }
 .contentBox{
     padding: 80px 80px 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
 }
@@ -46,13 +46,12 @@
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    margin-bottom: 20px;
 }
 .boardContainer::-webkit-scrollbar {
   width: 6px; 
 }
 .boardContainer::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.4);
+  background: #222;
   border-radius: 4px;
 }
 .boardContainer::-webkit-scrollbar-track {
@@ -60,27 +59,54 @@
 }
 .projectBoard{
     width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px 40px;
-    gap: 40px;
-    flex: 1;
-    overflow-y: hidden;
-    justify-content: center;
+    height: calc(100vh - 80px);
+    padding: 60px 40px;
     position: relative;
+    overflow: hidden;
+}
+.projectBoard .filterBox{
+    width: 20%;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 60px;
+}
+.filterBox .filterCondition{
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #222;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: normal;
+    font-family: 'Aldrich';
+    cursor: pointer;
+    transition: background-color .5s ease, color .5s ease;
+}
+.filterBox .filterCondition:hover{
+    background-color: #333;
+}
+.filterBox .filterCondition.active{
+    background-color: #fff;
+    color: #222;
+}
+.projectCardList {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
 }
 .projectCard{
-    background-position: center;
-    background-size: 1000px 600px;
-    width: 30%;
-    height: 450px;
-    cursor: pointer;
+    min-width: 400px;
+    height: 500px;
+    border: 1px solid #222;
     overflow: hidden;
     position: relative;
     border-radius: 10px;
     border: 1px solid #555;
-    opacity: 0;
 }
 
 .hoverBox{
@@ -115,7 +141,7 @@
     background: #eee;
 }
 :global(body.darkMode) .boardContainer::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255);
 }
 
 @media screen and (min-width: 730px) and (max-width: 1350px){
