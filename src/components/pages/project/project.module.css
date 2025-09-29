@@ -67,24 +67,14 @@
 .projectBoard .boardUpper{
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: 30px;
 }
-.boardUpper .boardNotice{
-    position: relative;
-    user-select: none;
-}
-.boardUpper .boardNotice span{
-    color: #777;
-    font-size: 18px;
-    transform: skewX(-23deg);
-    display: inline-block;
-}
-.boardUpper .boardNotice svg{
-    position: absolute;
+.boardUpper .mobileDragGuide svg{
     top: 25%;
     margin-left: 10px;
+    display: none;
 }
-.boardUpper .boardNotice svg line, .boardUpper .boardNotice svg polygon{
+.boardUpper .mobileDragGuide svg line, .boardUpper .mobileDragGuide svg polygon{
     stroke: #777;
     fill: #777;
 }
@@ -429,28 +419,7 @@
     .projectBoard{
         padding: 40px 0;
     }
-    .projectBoard .boardUpper{
-        display: flex;
-        align-items: center;
-        gap: 40px;
-    }
-    .boardUpper .boardNotice{
-        position: relative;
-        user-select: none;
-    }
-    .boardUpper .boardNotice span{
-        color: #777;
-        font-size: 14px;
-        transform: skewX(-23deg);
-        display: inline-block;
-    }
-    .boardUpper .boardNotice svg{
-        position: absolute;
-        top: 25%;
-        margin-left: 10px;
-    }
-    .boardUpper .boardNotice svg line, .boardUpper .boardNotice svg polygon{
-        stroke: #777;
-        fill: #777;
+    .boardUpper .mobileDragGuide svg{
+        display: block;
     }
 }
