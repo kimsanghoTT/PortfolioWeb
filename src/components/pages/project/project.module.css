@@ -75,6 +75,8 @@
     position: absolute;
     right: 0;
     bottom: -30px;
+    display: none;
+    user-select: none;
 }
 .boardUpper .mobileDragGuide::after{
     background: url("/source/img/icons/right-arrow.png") no-repeat center/cover;
@@ -443,7 +445,7 @@
     .projectBoard{
         padding: 40px 0;
     }
-    .boardUpper .mobileDragGuide svg{
+    .boardUpper .mobileDragGuide {
         display: inline-block;
     }
 }
