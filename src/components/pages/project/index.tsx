@@ -1,5 +1,5 @@
 "use client"
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import styles from "./project.module.css";
 import ProjectBoard from "./sub_components/project_board";
 import usePageAnimation from "../_hooks/usePageAnimation";

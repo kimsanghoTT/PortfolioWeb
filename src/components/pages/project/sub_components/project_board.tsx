@@ -6,6 +6,7 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Mousewheel } from "swiper/modules";
 import ProjectCard from "./project_card";
+import { useGSAP } from "@gsap/react";
 
 interface Project {
     id: string;
@@ -23,7 +24,7 @@ interface Project {
     link: string;
 }
 
-const ProjectBoard = ({filteredItems}: Props) => {
+const ProjectBoard = () => {
     const boardRef = useRef<HTMLDivElement | null>(null);
     const cardListRef = useRef<SwiperRef | null>(null);
     const [filteredItems, setFilteredItems] = useState<Project[]>(Projects);
@@ -49,6 +50,25 @@ const ProjectBoard = ({filteredItems}: Props) => {
         })
     }
 
+    const handleFilter = (condition: "All" | "Team" | "Single") => {
+        setFilterCondition(condition);
+        setTimeout(() => {
+            animateCards();
+        }, 10);
+    }
+
+    const animateCards = () => {
+        if (!boardRef.current) return;
+        const cards = boardRef.current.querySelectorAll(`.${styles.projectCard}`);
+        if (!cards.length) return;
+
+        gsap.fromTo(
+            cards,
+            { y: 50, opacity: 0, pointerEvents: "none" },
+            { y: 0, opacity: 1, pointerEvents: "all", duration: 0.5, stagger: 0.2, ease: "power2.inOut" }
+        );
+    };
+
     return(
         <div className={styles.projectBoard} ref={boardRef}>
             <div className={styles.filterBox}>
@@ -56,7 +76,7 @@ const ProjectBoard = ({filteredItems}: Props) => {
                     <button 
                         key={condition} 
                         className={`${styles.filterCondition} ${filterCondition === condition ? styles.active : ""}`}
-                        onClick={() => setFilterCondition(condition as typeof filterCondition)}
+                        onClick={() => handleFilter(condition as typeof filterCondition)}
                     >
                         {condition}
                     </button>

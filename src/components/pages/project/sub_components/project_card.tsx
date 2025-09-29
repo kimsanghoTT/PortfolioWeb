@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "../project.module.css";
 import Link from "next/link";
 
@@ -27,19 +27,32 @@ interface Props{
 const ProjectCard = ({project, flippedCardId, handleFlipCard}: Props) => {
     const [isHovered, setIsHovered] = useState<boolean>(false);
 
-    useEffect(() => {
-        console.log(flippedCardId);
-        
-    },[flippedCardId])
-
     return(
         <div 
-            className={`${styles.cardInner} ${flippedCardId.includes(project.id) ? styles.flipped : ""}`}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-            <div className={styles.frontSide} onClick={() => handleFlipCard(project.id)} style={{backgroundImage: `url(${project.image})`}}>
-                <video autoPlay muted loop className={isHovered ? styles.active : ""}>
+            className={`${styles.cardInner} ${flippedCardId.includes(project.id) ? styles.flipped : ""}`}>
+            <div 
+                className={styles.frontSide} 
+                onMouseEnter={(e) => {
+                    setIsHovered(true);
+
+                    const video = e.currentTarget.querySelector("video");
+                    video?.play();
+                }}
+                onMouseLeave={(e) => {
+                    setIsHovered(false);
+
+                    const video = e.currentTarget.querySelector("video");
+                    video?.pause();
+                    if(video) video.currentTime = 0;
+                }}
+                onClick={() => handleFlipCard(project.id)} 
+                style={{backgroundImage: `url(${project.image})`}}
+            >
+                <video 
+                    muted 
+                    playsInline
+                    className={isHovered ? styles.active : ""}
+                >
                     <source src={project.video} type="video/mp4" />
                 </video>
                 <div className={styles.titleBox}>

@@ -20,10 +20,11 @@ const usePageAnimation = ({contentRef, styles}: Props) => {
             animationTimeLine
             .to(`.${styles.sectionTitle}`, {"--after-width": "100%", duration: 1})
             .fromTo(sectionTitleTextChars,{x:150, opacity:0}, {x:0, opacity: 1, duration: 0.5, stagger:0.1, ease: "power2.inOut"})
-            .fromTo(`.${styles.sectionTitle} p`, {y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 0.5, stagger:0.2, ease: "power2.inOut"}, "<")
+            .fromTo(`.${styles.sectionTitle} p`, {x: 50, opacity: 0}, {x: 0, opacity: 1, duration: 0.5, stagger:0.2, ease: "power2.inOut"}, "<")
             
             if(styles.projectCard){
                 animationTimeLine
+                .fromTo(`.${styles.filterBox}`, {opacity:0}, {opacity:1, duration:0.5, ease: "power2.inOut"}, "<")
                 .fromTo(`.${styles.projectCard}`, 
                     {y: 50, opacity: 0, pointerEvents:"none"}, 
                     {y: 0, opacity: 1, pointerEvents:"all", duration: 0.5, stagger:0.2, ease: "power2.inOut"}, "<")
