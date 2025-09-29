@@ -68,11 +68,15 @@
     display: flex;
     align-items: center;
     gap: 30px;
+    justify-content: space-between;
+    position: relative;
 }
 .boardUpper .mobileDragGuide svg{
-    top: 25%;
-    margin-left: 10px;
+    width: 80px;
     display: none;
+    position: absolute;
+    bottom: -30px;
+    right: 0;
 }
 .boardUpper .mobileDragGuide svg line, .boardUpper .mobileDragGuide svg polygon{
     stroke: #777;
@@ -420,6 +424,6 @@
         padding: 40px 0;
     }
     .boardUpper .mobileDragGuide svg{
-        display: block;
+        display: inline-block;
     }
 }
