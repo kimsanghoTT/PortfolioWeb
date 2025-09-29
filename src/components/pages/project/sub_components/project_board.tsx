@@ -71,18 +71,33 @@ const ProjectBoard = () => {
 
     return(
         <div className={styles.projectBoard} ref={boardRef}>
-            <div className={styles.filterBox}>
-                {["All", "Team", "Single"].map(condition => (
-                    <button 
-                        key={condition} 
-                        className={`${styles.filterCondition} ${filterCondition === condition ? styles.active : ""}`}
-                        onClick={() => handleFilter(condition as typeof filterCondition)}
-                    >
-                        {condition}
-                    </button>
-                ))}
+            <div className={styles.boardUpper}>
+                <div className={styles.filterBox}>
+                    {["All", "Team", "Single"].map(condition => (
+                        <button 
+                            key={condition} 
+                            className={`${styles.filterCondition} ${filterCondition === condition ? styles.active : ""}`}
+                            onClick={() => handleFilter(condition as typeof filterCondition)}
+                        >
+                            {condition}
+                        </button>
+                    ))}
+                </div>
+                <span className={styles.boardNotice}>
+                    <span>Scroll or Drag</span>
+                    <svg width="150" height="20" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="10" x2="80" y2="10" stroke-width="2"
+                                stroke-dasharray="6,6" />
+                        <polygon points="85,5 100,10 85,15" />
+                    </svg>
+                </span>
             </div>
-            <Swiper className={styles.projectCardList} ref={cardListRef} modules={[Mousewheel]} spaceBetween={20} slidesPerView={"auto"} mousewheel={true}>
+            <Swiper 
+                className={styles.projectCardList} 
+                ref={cardListRef} 
+                modules={[Mousewheel]} spaceBetween={20} mousewheel={true}
+                breakpoints={{0:{slidesPerView:1}, 731:{slidesPerView:"auto"}}}
+            >
                 {filteredItems && filteredItems.map(project => (
                     <SwiperSlide key={project.id} className={styles.projectCard}>
                         <ProjectCard project={project} flippedCardId={flippedCardId} handleFlipCard={handleFlipCard}/>

@@ -51,6 +51,7 @@ const ProjectCard = ({project, flippedCardId, handleFlipCard}: Props) => {
                 <video 
                     muted 
                     playsInline
+                    loop
                     className={isHovered ? styles.active : ""}
                 >
                     <source src={project.video} type="video/mp4" />

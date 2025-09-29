@@ -64,6 +64,30 @@
     position: relative;
     overflow: visible;
 }
+.projectBoard .boardUpper{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+.boardUpper .boardNotice{
+    position: relative;
+    user-select: none;
+}
+.boardUpper .boardNotice span{
+    color: #777;
+    font-size: 18px;
+    transform: skewX(-23deg);
+    display: inline-block;
+}
+.boardUpper .boardNotice svg{
+    position: absolute;
+    top: 25%;
+    margin-left: 10px;
+}
+.boardUpper .boardNotice svg line, .boardUpper .boardNotice svg polygon{
+    stroke: #777;
+    fill: #777;
+}
 .projectBoard .filterBox{
     width: 220px;
     background-color: #222;
@@ -101,13 +125,13 @@
     overflow: visible;
     height: 100%;
 }
-.projectCard{
+.boardContainer .projectBoard .projectCardList .projectCard{
     overflow: visible;
     position: relative;
     border-radius: 10px;
     opacity: 1;
     perspective: 630px;
-    width: 400px !important;
+    width: 400px;
     height: 85% !important;
     border-radius: 10px;
     opacity: 0;
@@ -147,6 +171,22 @@
 .frontSide:hover {
   box-shadow: 0 0 18px 3px rgba(0, 0, 0, 0.5);
 }
+.frontSide::before{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #111, transparent 40%);
+    content: '';
+    display: block;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .5s ease;
+}
+.frontSide:hover::before{
+    opacity: 1;
+}
 .frontSide video{
     width: 100%;
     height: 100%;
@@ -154,6 +194,8 @@
     opacity: 0;
     transition: opacity 0.5s ease;
     position: absolute;
+    z-index: 1;
+    pointer-events: none;
 }
 .frontSide video.active{
     opacity: 1;
@@ -163,9 +205,9 @@
     background-color: #fff;
     bottom: 0;
     width: 100%;
-    height: 23%;
+    height: 18%;
     border-top: 1px solid #555;
-    padding: 10px 30px;
+    padding: 15px 30px;
     transition: background-color .5s ease;
 }
 .frontSide .titleBox p{
@@ -181,15 +223,14 @@
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
-    transition: .3s ease;
-    color: #222;
-    font-size: 18px;
-    transition: color .5s ease;
+    color: #fff;
+    font-size: 20px;
+    transition: opacity .3s ease, color .5s ease;
 }
 .frontSide:hover .titleBox .cardNotice{
     opacity: 1;
     animation: shaking 0.3s infinite;
-
+    z-index: 3;
 }
 @keyframes shaking {
     0%, 100% {
@@ -333,9 +374,6 @@
     background-color: #333;
 }
 :global(body.darkMode) .frontSide .titleBox p{
-    color: #eee;
-}
-:global(body.darkMode) .frontSide .titleBox .cardNotice{
     color: #fff;
 }
 :global(body.darkMode) .backSide{
@@ -353,6 +391,7 @@
 }
 :global(body.darkMode) .backSide .linkBox a{
     color: #eee;
+    border: 1px solid #fff;
 }
 :global(body.darkMode) .backSide .linkBox a::before{
     background-color: #fff;
@@ -363,6 +402,8 @@
 :global(body.darkMode) .backSide button .ico{
     filter: invert(1);
 }
+
+
 @media screen and (min-width: 730px) and (max-width: 1350px){
     .title{
         font-size: 80px;
@@ -388,27 +429,28 @@
     .projectBoard{
         padding: 40px 0;
     }
-    .projectCard{
-        width: 100%;
-        height: 300px;
+    .projectBoard .boardUpper{
+        display: flex;
+        align-items: center;
+        gap: 40px;
     }
-    .hoverBox{
-        width: 60%;
-        height: 60px;
-        line-height: 50px;
-        bottom: 30px;
-        left: 50%;
-        opacity: 1;
-        transform: translateX(-50%);
-        transition: none;
+    .boardUpper .boardNotice{
+        position: relative;
+        user-select: none;
     }
-    .projectCard:hover .hoverBox {
-        transform: translateX(-50%); 
-        opacity: 1; 
-        transition: none; 
+    .boardUpper .boardNotice span{
+        color: #777;
+        font-size: 14px;
+        transform: skewX(-23deg);
+        display: inline-block;
     }
-    .projectCard:hover{
-        transform: scale(1);
-        filter: grayscale(0);
+    .boardUpper .boardNotice svg{
+        position: absolute;
+        top: 25%;
+        margin-left: 10px;
+    }
+    .boardUpper .boardNotice svg line, .boardUpper .boardNotice svg polygon{
+        stroke: #777;
+        fill: #777;
     }
 }
