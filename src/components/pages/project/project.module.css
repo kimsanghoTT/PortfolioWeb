@@ -71,16 +71,36 @@
     justify-content: space-between;
     position: relative;
 }
-.boardUpper .mobileDragGuide svg{
-    width: 80px;
-    display: none;
+.boardUpper .mobileDragGuide{
     position: absolute;
-    bottom: -30px;
     right: 0;
+    bottom: -30px;
 }
-.boardUpper .mobileDragGuide svg line, .boardUpper .mobileDragGuide svg polygon{
-    stroke: #777;
-    fill: #777;
+.boardUpper .mobileDragGuide::after{
+    background: url("/source/img/icons/right-arrow.png") no-repeat center/cover;
+    content: '';
+    display: inline-block;
+    width: 25px;
+    height: 10px;
+    filter: invert(0.6);
+    animation: arrow-shaking .5s ease-in-out infinite alternate;
+}
+@keyframes arrow-shaking{
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    } 
+}
+.boardUpper .mobileDragGuide span{
+    display: inline-block;
+    color: #777;
+    transform: skewX(-23deg);
+    padding-right: 10px;
 }
 .projectBoard .filterBox{
     width: 220px;

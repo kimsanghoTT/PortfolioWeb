@@ -84,11 +84,7 @@ const ProjectBoard = () => {
                     ))}
                 </div>
                 <span className={styles.mobileDragGuide}>
-                    <svg height="20" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="0" y1="10" x2="60" y2="10" stroke-width="2"
-                                stroke-dasharray="6,6" />
-                        <polygon points="62,5 72,10 62,15" />
-                    </svg>
+                    <span>Scroll</span>
                 </span>
             </div>
             <Swiper 
