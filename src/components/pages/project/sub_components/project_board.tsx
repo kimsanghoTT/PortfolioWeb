@@ -84,7 +84,7 @@ const ProjectBoard = () => {
                     ))}
                 </div>
                 <span className={styles.mobileDragGuide}>
-                    <span>Scroll</span>
+                    <span>Drag</span>
                 </span>
             </div>
             <Swiper 
