@@ -9,7 +9,7 @@ const AboutEduCertificate = () => {
                     <span className={styles.titleText}>Education</span>
                 </div>
                 <ul>
-                    <li>(2024. 04 - 2024.09) KH 정보교육원 강남지원 - JAVA 풀스택 과정 수료</li>
+                    <li>(2024.04 - 2024.09) KH 정보교육원 강남지원 - JAVA 풀스택 과정 수료</li>
                     <li>(2025.04 - 2025.10) MBC컴퓨터아카데미 - 웹 퍼블리셔 & 프론트엔드 개발자 과정 수료</li>
                 </ul>
             </div>

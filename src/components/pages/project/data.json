@@ -25,6 +25,10 @@
         "DB": [
             { "name": "Oracle", "image": "/source/img/icons/ico_oracledb.png" }
         ],
+        "techSummary": {
+                "languages" : ["Java", "JavaScript", "HTML", "CSS"],
+                "frameworks":["Spring Boot", "thymeleaf", "jQuery", "Bootstrap"]
+        },
         "git": "https://github.com/kimsanghoTT/Aquarium.git",
         "notion": "https://shorturl.at/ufE1t",
         "link": ""
@@ -56,6 +60,10 @@
         "DB": [
             { "name": "MySQL", "image": "/source/img/icons/ico_mysql.png" }
         ],
+        "techSummary": {
+            "languages": ["Java", "JavaScript", "HTML", "CSS"],
+            "frameworks": ["Spring Boot", "React", "axios", "sockjs-client", "Bootstrap"]
+        },
         "git": "https://github.com/kimsanghoTT/B2O4.git",
         "notion": "http://bit.ly/4pClCT8",
         "link": ""
@@ -80,6 +88,10 @@
             { "name": "moment", "image": "/source/img/icons/ico_moment.png" }
         ],
         "DB": [],
+        "techSummary": {
+            "languages": ["JavaScript", "HTML", "CSS"],
+            "frameworks": ["React", "GSAP"]
+        },
         "git": "https://github.com/kimsanghoTT/B2O4.git",
         "notion": "",
         "link": "https://chalix.netlify.app/"
@@ -102,6 +114,10 @@
             { "name": "GSAP", "image": "/source/img/icons/ico_gsap.png" }
         ],
         "DB": [],
+        "techSummary": {
+            "languages": ["JavaScript", "HTML", "CSS"],
+            "frameworks": ["React", "GSAP"]
+        },
         "git": "https://github.com/kimsanghoTT/Responsive-Web-Design.git",
         "notion": "",
         "link": "https://ksh-responsive-web-design.netlify.app/"
@@ -136,6 +152,10 @@
         "DB": [
             { "name": "MySQL", "image": "/source/img/icons/ico_mysql.png" }
         ],
+        "techSummary": {
+            "languages": ["Java", "JavaScript", "HTML", "CSS"],
+            "frameworks": ["React", "GSAP", "axios", "Spring Boot"]
+        },
         "git": "https://github.com/kimsanghoTT/clone-aquaplanet-ilsan.git",
         "notion": "http://bit.ly/4pzggrE",
         "link": "https://clone-aquaplanet-ilsan.netlify.app/aquaplanet/ilsan"
@@ -160,6 +180,10 @@
             { "name": "tsParticles", "image": "/source/img/icons/ico_tsparticle.png" }
         ],
         "DB": [],
+        "techSummary": {
+            "languages": ["TypeScript", "HTML", "CSS"],
+            "frameworks": ["React", "Next.js", "GSAP"]
+        },
         "git": "https://github.com/kimsanghoTT/PortfolioWeb.git",
         "notion": "",
         "link": ""
@@ -186,6 +210,10 @@
         "DB": [
             { "name": "indexedDB", "image": "/source/img/icons/ico_indexedDB.png"}
         ],
+        "techSummary": {
+            "languages": ["TypeScript", "HTML", "CSS"],
+            "frameworks": ["React", "Swiper", "GSAP", "jQuery"]
+        },
         "git": "https://github.com/kimsanghoTT/WZ.git",
         "notion": "http://bit.ly/4nP25NH",
         "link": "https://wzplay.netlify.app/"

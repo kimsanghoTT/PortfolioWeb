@@ -46,6 +46,7 @@ const ProjectDetail = () => {
         .fromTo(`.${styles.numIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
         .fromTo(`.${styles.title} .${styles.titleText}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
         .fromTo(`.${styles.description} p`, {y:50}, {opacity:1, y:0, duration:0.5, ease:"power2.inOut"})
+        .fromTo(`.${styles.skillListContainer}`, {opacity:0}, {opacity:1, duration:0.5, ease:"power2.inOut"},"<")
         .fromTo(`.${styles.language}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
         .fromTo(`.${styles.framework}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
         .fromTo(`.${styles.db}`, {y:50}, {y:0, opacity:1, duration:0.3, ease:"power2.inOut"})
@@ -70,10 +71,7 @@ const ProjectDetail = () => {
     }
 
     return(
-        <div className={styles.wrapper}>
-            <div className={styles.lightBackground} style={{opacity: darkMode ? "0" : "1"}}></div>
-            <div className={styles.darkBackground} style={{opacity: darkMode ? "1" : "0"}}></div>
-            <div className={styles.backImage} style={{background: `url(${project.image}) no-repeat center/cover`}}></div>
+        <div className={styles.wrapper} style={{background: `url(${project.image}) no-repeat center/cover`}}>
             <section className={styles.container} ref={containerRef}>
                 <div className={styles.upperArea}>
                     <span className={styles.back} onClick={backToProject}><span className="hidden">뒤로가기</span></span>

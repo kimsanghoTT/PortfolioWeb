@@ -25,6 +25,7 @@ const usePageAnimation = ({contentRef, styles}: Props) => {
             if(styles.projectCard){
                 animationTimeLine
                 .fromTo(`.${styles.filterBox}`, {opacity:0}, {opacity:1, duration:0.5, ease: "power2.inOut"}, "<")
+                .fromTo(`.${styles.mobileDragGuide}`, {opacity:0}, {opacity:1, duration:0.5, ease:"power2.inOut"}, "<")
                 .fromTo(`.${styles.projectCard}`, 
                     {y: 50, opacity: 0, pointerEvents:"none"}, 
                     {y: 0, opacity: 1, pointerEvents:"all", duration: 0.5, stagger:0.2, ease: "power2.inOut"}, "<")
@@ -37,12 +38,13 @@ const usePageAnimation = ({contentRef, styles}: Props) => {
                 .fromTo(`.${styles.kimsangho} p`, {y:50}, {opacity:1, y:0, duration:0.3, stagger:0.2})
                 .fromTo(`.${styles.education} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.2}, "<")
                 .fromTo(`.${styles.certificate} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.2}, "<")
-                .fromTo(`.${styles.skillListTitle}`, {y:50}, {y:0, opacity:1, duration:0.3}, "<")
-                .fromTo(`.${styles.skills} li`, {y:50}, {y:0, opacity:1, duration:0.3}, "<")
+                .fromTo(`.${styles.skillListTitle}`, {scale:0}, {scale:1, opacity:1, duration:0.3}, "<")
+                .fromTo(`.${styles.skillList}`, {opacity:0}, {opacity:1, duration:0.3}, "<")
+                .fromTo(`.${styles.skill}`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.02}, "<")
                 .to(`.${styles.contactBox}`, {borderWidth:1, duration:0.3}, "<")
                 .fromTo([`.${styles.contactBox} .${styles.email}`, `.${styles.contactBox} .${styles.git}`], 
-                    {y:50}, {y:0, opacity:1, duration:0.3})
-                .to(`.${styles.contactBox} a`, {opacity:1, duration:0.3})
+                    {y:50}, {y:0, opacity:1, duration:0.3}, "<")
+                .to(`.${styles.contactBox} a`, {opacity:1, duration:0.3}, "<0.5")
             }
             
         }, contentRef.current)

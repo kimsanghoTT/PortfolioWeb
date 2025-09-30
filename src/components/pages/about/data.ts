@@ -28,6 +28,6 @@ export const skills = {
   databases: [
     { name: "Oracle", image: "/source/img/icons/ico_oracledb.png" },
     { name: "MySQL", image: "/source/img/icons/ico_mysql.png" },
-    { "name": "indexedDB", "image": "/source/img/icons/ico_indexedDB.png"}
+    { name: "indexedDB", image: "/source/img/icons/ico_indexedDB.png"}
   ]
 };

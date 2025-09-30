@@ -13,6 +13,7 @@ interface Project {
     languages: { name: string; image: string }[];
     frameworks: { name: string; image: string }[];
     DB: { name: string; image: string }[];
+    techSummary: { languages: string[], frameworks: string[]};
     git: string;
     notion: string;
     link: string;
@@ -66,10 +67,17 @@ const ProjectCard = ({project, flippedCardId, handleFlipCard}: Props) => {
                     <p>{project.title}</p>
                     <p>{project.summary}</p>
                 </div>
-                <div className={styles.languageTags}>
-                    {project.languages.map((language, index) => (
-                        <span className={styles.tag} key={index}>{language.name}</span>
-                    ))}
+                <div className={styles.techTags}>
+                    <div className={styles.tagBox}>
+                        {project.techSummary.languages.map((language, index) => (
+                            <span className={`${styles.tag} ${styles.language}`} key={index}>{language}</span>
+                        ))}
+                    </div>
+                    <div className={styles.tagBox}>
+                        {project.techSummary.frameworks.map((framework, index) => (
+                            <span className={`${styles.tag} ${styles.framework}`} key={index}>{framework}</span>
+                        ))}
+                    </div>
                 </div>
                 <div className={styles.linkBox}>
                     <Link href={`/project_detail/${project.id}`}>자세히 보기</Link>

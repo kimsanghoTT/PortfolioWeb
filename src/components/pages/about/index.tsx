@@ -4,9 +4,8 @@ import { useRef } from "react";
 import styles from "./about.module.css";
 import usePageAnimation from "../_hooks/usePageAnimation";
 import AboutSkills from "./sub_components/about_skills";
-import AboutKimsangho from "./sub_components/about_kimsangho";
-import AboutEduCertificate from "./sub_components/about_edu+certificate";
 import AboutContact from "./sub_components/about_contact";
+import AboutIntroduce from "./sub_components/about_introduce";
 
 const About = () => {
     const contentRef = useRef<HTMLDivElement | null>(null);
@@ -27,8 +26,7 @@ const About = () => {
                     <p>사람과 사람을 잇는 즐거운 웹 경험을 만드는 개발자가 되겠습니다.</p>
                 </div>
                 <div className={styles.content}>
-                    <AboutKimsangho/>
-                    <AboutEduCertificate/>
+                    <AboutIntroduce/>
                     <AboutSkills/>
                     <AboutContact/>
                 </div>

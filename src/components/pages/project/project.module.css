@@ -77,6 +77,7 @@
     bottom: -30px;
     display: none;
     user-select: none;
+    opacity: 0;
 }
 .boardUpper .mobileDragGuide::after{
     background: url("/source/img/icons/right-arrow.png") no-repeat center/cover;
@@ -264,7 +265,7 @@
     transition: background-color .5s ease, color .5s ease;
 }
 .backSide .titleBox p:first-child{
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 800;
     font-family: 'Aldrich';
 }
@@ -276,21 +277,32 @@
     margin-bottom: 20px;
     transition: color .5s ease;
 }
-.backSide .languageTags{
+.backSide .techTags{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 8px;
-}
-.languageTags .tag{
-    padding: 4px 8px;
-    background-color: #444;
-    color: #fff;
-    transition: background-color .5s ease, color .5s ease;
-    user-select: none;
     margin-bottom: 50px;
 }
-.languageTags .tag:hover{
-    background-color: #222;
+.techTags .tagBox{
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.tagBox .tag{
+    padding: 4px 8px;
+    transition: background-color .5s ease, color .5s ease;
+    user-select: none;
+    font-weight: 500;
+    background-color: #e7e7e7; 
+}
+.tagBox .tag.language {
+    color: #f86e6e;           
+}
+.tagBox .tag.framework {
+    color: #0eabc7;           
+}
+.techTags .tag:hover{
+    background-color: #d7d7d7;
 }
 .backSide .linkBox{
     display: flex;
@@ -387,23 +399,22 @@
     box-shadow: 0 0 18px 3px rgba(0, 0, 0, 1);
 }
 :global(body.darkMode) .frontSide .titleBox{
-    background-color: #333;
+    background-color: #444;
 }
 :global(body.darkMode) .frontSide .titleBox p{
     color: #fff;
 }
 :global(body.darkMode) .backSide{
-    background-color: #333;
+    background-color: #444;
 }
 :global(body.darkMode) .backSide p {
     color: #eee;
 }
-:global(body.darkMode) .backSide .tag{
-    background-color: #fff;
-    color: #222;
+:global(body.darkMode) .tagBox .tag{
+    background-color: #4B5563;
 }
-:global(body.darkMode) .backSide .tag:hover{
-    background-color: #ddd;
+:global(body.darkMode) .tagBox .tag:hover {
+    background-color: #222; 
 }
 :global(body.darkMode) .backSide .linkBox a{
     color: #eee;

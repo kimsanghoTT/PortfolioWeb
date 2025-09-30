@@ -31,42 +31,49 @@ const UsedSkills = ({project}: Props) => {
                 <span className={styles.titleText}>Used Skills</span>
             </div>
             <div className={styles.skill}>
-                <span className={`${styles.subtitle} ${styles.language}`}>Languages</span>
-                <ul className={styles.languages}>
-                    {project.languages.map((item, index) => (
-                        <li key={index}>
-                            <span>{item.name}</span>
-                            <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}>
-                                <span className="hidden">아이콘</span>
-                            </span>
-                        </li>
+                <div className={styles.skillListContainer}>
+                    <span className={`${styles.subtitle} ${styles.language}`}>Languages</span>
+                    <ul className={styles.languages}>
+                        {project.languages.map((item, index) => (
+                            <li key={index}>
+                                <span>{item.name}</span>
+                                <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}>
+                                    <span className="hidden">아이콘</span>
+                                </span>
+                            </li>
 
-                    ))}
-                </ul>
+                        ))}
+                    </ul>
 
-                <span className={`${styles.subtitle} ${styles.framework}`}>Framework / Library</span>
-                <ul className={styles.frameworks}>
-                    {project.frameworks.map((item, index) => (
-                        <li key={index}>
-                            <span>{item.name}</span>
-                            <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}>
-                                <span className="hidden">아이콘</span>
-                            </span>
-                        </li>
-                    ))}
-                </ul>
+                    <span className={`${styles.subtitle} ${styles.framework}`}>Framework / Library</span>
+                    <ul className={styles.frameworks}>
+                        {project.frameworks.map((item, index) => (
+                            <li key={index}>
+                                <span>{item.name}</span>
+                                <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}>
+                                    <span className="hidden">아이콘</span>
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                    
+                    {project.DB.length > 0 && (
+                        <>
+                        <span className={`${styles.subtitle} ${styles.db}`}>DB</span>
+                        <ul className={styles.dbs}>
+                            {project.DB.map((item, index) => (
+                                <li key={index}>
+                                    <span>{item.name}</span>
+                                    <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}>
+                                        <span className="hidden">아이콘</span>
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>                
+                        </>
+                    )}
+                </div>
 
-                <span className={`${styles.subtitle} ${styles.db}`}>DB</span>
-                <ul className={styles.dbs}>
-                    {project.DB.map((item, index) => (
-                        <li key={index}>
-                            <span>{item.name}</span>
-                            <span className={styles.skillIcon} style={{background:`url(${item.image}) center/cover no-repeat`}}>
-                                <span className="hidden">아이콘</span>
-                            </span>
-                        </li>
-                    ))}
-                </ul>
             </div>
         </div>  
     )

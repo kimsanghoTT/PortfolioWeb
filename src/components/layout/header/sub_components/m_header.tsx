@@ -32,7 +32,7 @@ const M_HeaderNav = ({onHandleM_Menu, setM_handleMenu, m_handleMenu} : Props) =>
                         <Link href={"/project"} onClick={onHandleM_Menu}>Project</Link>
                     </li>
                     <li className={styles.m_navItem}>
-                        <Link href={"/about"} onClick={onHandleM_Menu}>about</Link>
+                        <Link href={"/about"} onClick={onHandleM_Menu}>About</Link>
                     </li>
                 </ul>
             </nav>
