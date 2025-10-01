@@ -60,7 +60,7 @@
 .projectBoard{
     width: 100%;
     height: calc(100vh - 280px);
-    padding: 40px;
+    padding: 40px 0;
     position: relative;
     overflow: visible;
 }

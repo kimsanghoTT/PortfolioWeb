@@ -1,13 +1,11 @@
 .wrapper{
     width: 100%;
-    height: 100vh;
     color: #222;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 .contentBox{
     padding: 80px 80px 0;
     width: 100%;
-    height: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -42,8 +40,7 @@
     transition: background-color .5s ease;
 }
 .content{
-    overflow: auto;
-    padding: 40px;
+    padding-top: 40px;
 }
 .content::-webkit-scrollbar {
   width: 6px; 
@@ -61,7 +58,7 @@
     gap: 20px;
 }
 .titleText{
-    font-size: 25px;
+    font-size: 30px;
     font-family:'Aldrich';
     font-weight: 500;
     opacity: 0;
@@ -74,10 +71,7 @@
     transition: filter .5s ease;
 }
 .listBlock{
-    margin-top: 80px;
-}
-.listBlock:first-child{
-    margin-top: 0;
+    height: calc(100vh - 80px);
 }
 .subtitle .num01{
     background: url("/source/img/icons/list01.png") no-repeat center/30px 30px;
@@ -94,16 +88,70 @@
 .subtitle .num05{
     background: url("/source/img/icons/list05.png") no-repeat center/30px 30px;
 }
-.kimsangho p{
-    margin-left: 50px;
-    opacity: 0;
+.introduce .introCardList{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    height: 90%;
+    padding: 50px;
+}
+.introCardList .gridLeft .kimsangho{
+    height: 100%;
     font-size: 18px;
+}
+.introCardList .gridRight{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+.introCard {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+    background-color: #f5f5f5;
+    transition: background-color .5s ease, box-shadow .5s ease;
+    opacity: 0;
+}
+.introCard .cardUpper{
+    display: flex;
+    align-items: center;
+    gap: 10px;     
+}
+.introCard .cardTitle {
+    font-family: 'Aldrich';
+    font-weight: 600;
+    font-size: 25px;
+    color: #0eabc7;   
+    opacity: 0;
+}
+.kimsangho .cardTitle{
+    color: #f86e6e;  
+}
+.introCard .introIcon{
+    content: '';
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    transition: filter .5s ease;
+    opacity: 0;
+}
+.kimsangho .introIcon{
+    background: url("/source/img/icons/ico_human.png") no-repeat center/cover;
+}
+.education .introIcon{
+    background: url("/source/img/icons/ico_education.png") no-repeat center/cover;
+}
+.certificate .introIcon{
+    background: url("/source/img/icons/ico_certificate.png") no-repeat center/cover;
+}
+.kimsangho p{
+    opacity: 0;
+    font-size: 16px;
 }
 .kimsangho p:first-of-type{
     margin-top: 20px;
 }
 .education ul, .certificate ul{
-    margin-left: 50px;
     margin-top: 20px;
 }
 .education li, .certificate li, .skills li{
@@ -111,6 +159,7 @@
 }
 .skillListContainer{
     margin-top: 20px;
+    height: 90%;
 }
 .skills .skillTab{
     display: flex;
@@ -157,9 +206,9 @@
 .skills .skillList{
     margin: 0 auto;
     margin-top: 50px;
-    min-height: 350px;
+    height: 80%;
     border-radius: 15px;
-    padding: 60px;
+    padding: 40px;
     width: 80%;
     background-color: #f5f5f5;
     transition: background-color .5s ease;
@@ -167,9 +216,10 @@
 }
 .skillList ul{
     display: grid;
-    grid-template-columns: repeat(120px, 1fr);
+    grid-template-columns: repeat(auto-fit, 150px);
+    justify-content: center;
     text-align: center;
-    row-gap: 30px;
+    row-gap: 40px;
 }
 .skillList .skill{
     display: flex;
@@ -186,7 +236,6 @@
 }
 .contact{
     position: relative;
-    margin-bottom: 100px
 }
 .contact .contactBox{
     width: 80%;
@@ -194,7 +243,7 @@
     border-color: #222;
     border-width: 0px;
     border-style: solid;
-    height: 300px;
+    height: 80%;
     border-radius: 20px;
     margin-top: 30px;
     position: relative;
@@ -254,6 +303,13 @@
 }
 :global(body.darkMode) .content::-webkit-scrollbar-thumb{
     background: rgba(255, 255, 255, 0.8);
+}
+:global(body.darkMode) .introCard{
+    background-color: #444;
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.8);
+}
+:global(body.darkMode) .introCard .introIcon{
+    filter: invert(0.8);
 }
 :global(body.darkMode) .skills .skillListTitle:hover{
     text-shadow: 1px 1px 2px rgba(255,255,255,0.8);

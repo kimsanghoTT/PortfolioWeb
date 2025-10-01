@@ -15,13 +15,6 @@ interface Props {
 const useHomeScrollEvent = ({ homeRef, contentBoxRef }: Props) => {
     const scrolling = useRef<boolean>(false);
     
-
-    useEffect(() => {
-        if ('scrollRestoration' in window.history) {
-            window.history.scrollRestoration = 'manual';
-        }
-    }, []);
-
     useGSAP(() => {
         if(!homeRef.current || !contentBoxRef.current) return;
         ScrollTrigger.refresh();
@@ -67,7 +60,7 @@ const useHomeScrollEvent = ({ homeRef, contentBoxRef }: Props) => {
                 const scrollRange = direction === 1 ? window.innerHeight : 0;
 
                 gsap.to(window, {
-                    scrollTo: {y:scrollRange, autoKill: false},
+                    scrollTo: scrollRange,
                     duration: 1,
                     ease: "power2.inOut",
                     overwrite: "auto",

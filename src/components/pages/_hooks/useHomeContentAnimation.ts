@@ -29,6 +29,10 @@ const useHomeContentAnimation = ({contentBoxRef, rectRef} : Props) => {
                 gsap.set(rect, { strokeDasharray: rectLength, strokeDashoffset: rectLength });
 
                 animationTimeline.to(rect, {strokeDashoffset: 0, duration: 2, ease: "power2.inOut"});
+
+                window.addEventListener("resize", () => {
+                    gsap.to(`.${styles.sectionTitle}`, {"--after-width": "100%", duration: 1});
+                })
             }
             else{
                 animationTimeline.to(`.${styles.sectionTitle}`, {"--after-width": "100%", duration: 1});

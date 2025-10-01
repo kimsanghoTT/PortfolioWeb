@@ -32,10 +32,9 @@ body {
 
 body {
   word-break: keep-all;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 body::-webkit-scrollbar {
-  display: none;
 }
 * {
   box-sizing: border-box;

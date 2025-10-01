@@ -2,14 +2,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 interface Props {
-    contentRef: React.RefObject<HTMLDivElement | null>;
+    contentBoxRef: React.RefObject<HTMLDivElement | null>;
     styles: {[key:string]:string}
 }
 
-const usePageAnimation = ({contentRef, styles}: Props) => {
+const usePageAnimation = ({contentBoxRef, styles}: Props) => {
 
     useGSAP(() => {
-        if (!contentRef.current) return;
+        if (!contentBoxRef.current) return;
 
         const animationContext = gsap.context((self) => {
             const sectionTitleTextChars = self.selector?.(`.${styles.sectionTitleTextChar}`);
@@ -33,23 +33,19 @@ const usePageAnimation = ({contentRef, styles}: Props) => {
 
             if(styles.content){
                 animationTimeLine
-                .fromTo(`.${styles.numIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
-                .fromTo(`.${styles.subtitle} .${styles.titleText}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
+                .fromTo(`.${styles.introduce} .${styles.numIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
+                .fromTo(`.${styles.introduce} .${styles.subtitle} .${styles.titleText}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
+                .fromTo(`.${styles.introCard}`, {y:-100}, {y:0, opacity:1, duration:0.5, stagger:0.2, ease: "power2.inOut"}, "<")
+                .fromTo(`.${styles.introIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.3, stagger:0.2})
+                .fromTo(`.${styles.cardTitle}`, {x:70}, {x:0, opacity:1, duration:0.5, stagger:0.2, ease:"power2.inOut"}, "<")
                 .fromTo(`.${styles.kimsangho} p`, {y:50}, {opacity:1, y:0, duration:0.3, stagger:0.2})
                 .fromTo(`.${styles.education} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.2}, "<")
                 .fromTo(`.${styles.certificate} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.2}, "<")
-                .fromTo(`.${styles.skillListTitle}`, {scale:0}, {scale:1, opacity:1, duration:0.3}, "<")
-                .fromTo(`.${styles.skillList}`, {opacity:0}, {opacity:1, duration:0.3}, "<")
-                .fromTo(`.${styles.skill}`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.02}, "<")
-                .to(`.${styles.contactBox}`, {borderWidth:1, duration:0.3}, "<")
-                .fromTo([`.${styles.contactBox} .${styles.email}`, `.${styles.contactBox} .${styles.git}`], 
-                    {y:50}, {y:0, opacity:1, duration:0.3}, "<")
-                .to(`.${styles.contactBox} a`, {opacity:1, duration:0.3}, "<0.5")
             }
             
-        }, contentRef.current)
+        }, contentBoxRef.current)
 
         return () => animationContext.revert();
-    },{scope: contentRef})
+    },{scope: contentBoxRef})
 }
 export default usePageAnimation;

@@ -19,7 +19,7 @@ const AboutSkills = () => {
     return(
         <div className={`${styles.skills} ${styles.listBlock}` }>
             <div className={styles.subtitle}>
-                <span className={`${styles.numIcon} ${styles.num04}`}><span className="hidden">넘버링아이콘</span></span>
+                <span className={`${styles.numIcon} ${styles.num02}`}><span className="hidden">넘버링아이콘</span></span>
                 <span className={styles.titleText}>Skills</span>
             </div>
             <div className={styles.skillListContainer}>

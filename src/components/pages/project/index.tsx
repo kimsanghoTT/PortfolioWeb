@@ -1,18 +1,18 @@
 "use client"
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import styles from "./project.module.css";
 import ProjectBoard from "./sub_components/project_board";
-import usePageAnimation from "../_hooks/usePageAnimation";
+import useProjectContentAnimation from "../_hooks/useProjectContentAnimation";
 
 const Project = () => {
-    const contentRef = useRef<HTMLDivElement | null>(null);
+    const contentBoxRef = useRef<HTMLDivElement | null>(null);
     const titleText = useMemo(() => "PROJECT".split(""), []);
 
-    usePageAnimation({ contentRef, styles });
+    useProjectContentAnimation({ contentBoxRef, styles });
 
     return(
         <div className={styles.wrapper}>
-            <section className={styles.contentBox} ref={contentRef}>
+            <section className={styles.contentBox} ref={contentBoxRef}>
                 <div className={styles.sectionTitle}>
                     <h2 className={styles.title}>
                         {titleText.map ((char, index) => (

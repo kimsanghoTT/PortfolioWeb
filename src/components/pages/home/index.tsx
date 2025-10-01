@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './home.module.css';
 import HomeContents from './sub_components/home_contents';
 import MainVisual from './sub_components/home_main_visual';
@@ -11,6 +11,9 @@ const Home = () => {
     const contentBoxRef = useRef<HTMLDivElement | null>(null);
     useHomeScrollEvent({homeRef, contentBoxRef});
     
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, []);
 
     return (
     <div className={styles.wrapper} ref={homeRef}>

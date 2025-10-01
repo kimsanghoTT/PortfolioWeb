@@ -2,20 +2,21 @@
 
 import { useRef } from "react";
 import styles from "./about.module.css";
-import usePageAnimation from "../_hooks/usePageAnimation";
 import AboutSkills from "./sub_components/about_skills";
 import AboutContact from "./sub_components/about_contact";
 import AboutIntroduce from "./sub_components/about_introduce";
+import useAboutContentAnimation from "../_hooks/useAboutContentAnimation";
 
 const About = () => {
-    const contentRef = useRef<HTMLDivElement | null>(null);
+    const contentBoxRef = useRef<HTMLDivElement | null>(null);
+    
     const titleText = "ABOUT";
 
-    usePageAnimation({contentRef, styles});
+    useAboutContentAnimation({contentBoxRef, styles});
 
     return(
         <div className={styles.wrapper}>
-            <section className={styles.contentBox} ref={contentRef}>
+            <section className={styles.contentBox} ref={contentBoxRef}>
                 <div className={styles.sectionTitle}>
                     <h2 className={styles.title}>
                         {titleText.split("").map ((char, index) => (

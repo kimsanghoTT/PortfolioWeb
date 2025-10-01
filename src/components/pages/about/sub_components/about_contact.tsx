@@ -5,7 +5,7 @@ const AboutContact = () => {
     return(
         <div className={`${styles.contact} ${styles.listBlock}` }>
             <div className={styles.subtitle}>
-                <span className={`${styles.numIcon} ${styles.num05}`}><span className="hidden">넘버링아이콘</span></span>
+                <span className={`${styles.numIcon} ${styles.num03}`}><span className="hidden">넘버링아이콘</span></span>
                 <span className={styles.titleText}>Contact</span>
             </div>
             <div className={styles.contactBox}>
