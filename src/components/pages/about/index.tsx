@@ -9,10 +9,11 @@ import useAboutContentAnimation from "../_hooks/useAboutContentAnimation";
 
 const About = () => {
     const contentBoxRef = useRef<HTMLDivElement | null>(null);
-    
     const titleText = "ABOUT";
 
     useAboutContentAnimation({contentBoxRef, styles});
+
+    
 
     return(
         <div className={styles.wrapper}>

@@ -39,9 +39,6 @@
     width: var(--after-width); 
     transition: background-color .5s ease;
 }
-.content{
-    padding-top: 40px;
-}
 .content::-webkit-scrollbar {
   width: 6px; 
 }
@@ -72,6 +69,7 @@
 }
 .listBlock{
     height: calc(100vh - 80px);
+    padding-top: 40px;
 }
 .subtitle .num01{
     background: url("/source/img/icons/list01.png") no-repeat center/30px 30px;
@@ -101,8 +99,9 @@
 }
 .introCardList .gridRight{
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
     gap: 20px;
+    height: 100%;
 }
 .introCard {
     padding: 30px;
@@ -206,7 +205,7 @@
 .skills .skillList{
     margin: 0 auto;
     margin-top: 50px;
-    height: 80%;
+    min-height: 80%;
     border-radius: 15px;
     padding: 40px;
     width: 80%;
@@ -339,11 +338,28 @@
     .title{
         font-size: 80px;
     }
+    .skills .skillList{
+        padding: 20px;
+    }
+    .skillList ul{
+        grid-template-columns: repeat(auto-fit, 100px);
+        justify-content: center;
+        text-align: center;
+        row-gap: 40px;
+    }
+    .contact .contactBox{
+        flex-direction: column;
+        gap: 100px;
+        height: 80%;
+        padding: 50px;
+        align-items: start;
+        justify-content: center;
+    }
 }
 
 @media screen and (max-width: 730px){
     .contentBox{
-        padding: 50px 20px 70px 20px;
+        padding: 50px 3% 70px 3%;
     }
     .title{
         font-size: 50px;
@@ -353,6 +369,9 @@
         width: 20px;
         height: 20px;
         opacity: 0;
+    }
+    .titleText{
+        font-size: 25px;
     }
     .subtitle{
         gap: 10px;
@@ -372,19 +391,51 @@
     .subtitle .num05{
         background: url("/source/img/icons/list05.png") no-repeat center/20px 20px;
     }
-    .kimsangho p{
-        margin-left: 30px;
+    .listBlock{
+        height: auto;
+    }
+    .introduce .introCardList{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 50px;
+    }
+    .introCardList .gridLeft .kimsangho{
+        height: 100%;
         font-size: 16px;
     }
-    .education ul, .certificate ul, .skills ul{
-        margin-left: 30px;
-        margin-top: 20px;
+    .introCardList .gridRight{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
-    .skills .skillListTitle{
-        margin-left: 30px;
+    .kimsangho p{
+        font-size: 16px;
+    }
+    .skills .skillTab{
+        gap: 35px;
+        font-size: 16px;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    .skills .skillTab .skillListTitle{
+        height: auto;
+    }
+    .skills .skillList{
+        padding: 20px;
+        min-height: 400px;
     }
     .skills ul{
-        gap: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+    .skills .skill{
+        flex-basis: 80px;
+    }
+    .skills .skill .skillIcon{
+        width: 40px;
+        height: 40px;
     }
     .contact .contactBox{
         flex-direction: column;

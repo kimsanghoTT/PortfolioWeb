@@ -28,7 +28,7 @@ const AboutSkills = () => {
                         language
                     </li>
                     <li className={`${styles.skillListTitle} ${skillTab === "framework" ? styles.selected : ""}`} onClick={() => handleSkillTab("framework")}>
-                        Frameworks / Library
+                        Frameworks
                     </li>
                     <li className={`${styles.skillListTitle} ${skillTab === "database" ? styles.selected : ""}`} onClick={() => handleSkillTab("database")}>
                         Database
