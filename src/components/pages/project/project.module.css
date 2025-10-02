@@ -343,11 +343,10 @@
     transform: translateX(-20%) rotate(45deg); 
 }
 .backSide .returnFrontSide{
-    text-align: end;
     height: 30px;
     position: absolute;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
 }
 .backSide button{
     display: inline-block;
@@ -448,7 +447,7 @@
 
 @media screen and (max-width: 730px){
     .contentBox{
-        padding: 50px 20px 0 20px;
+        padding: 70px 3.5% 0 3.5%;
     }
     .title{
         font-size: 50px;

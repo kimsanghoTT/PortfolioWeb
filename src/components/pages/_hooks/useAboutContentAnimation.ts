@@ -15,6 +15,8 @@ const useAboutContentAnimation = ({contentBoxRef, styles}: Props) => {
     const [isMobile, setIsMobile] = useState<boolean>(false);
 
     useEffect(() => {
+        if(window.innerWidth <= 730) setIsMobile(true);
+
         const observeResizing = () => {
             setIsMobile(window.innerWidth <= 730);
         };
@@ -109,7 +111,6 @@ const useAboutContentAnimation = ({contentBoxRef, styles}: Props) => {
         return () => animationSettingsPerMedia.revert();
     },{scope: contentBoxRef})
 
-    
 
     const aboutContentAnimation = (isMobile:boolean) => {
 
@@ -123,8 +124,8 @@ const useAboutContentAnimation = ({contentBoxRef, styles}: Props) => {
         });
 
         introduceAnimationTimeline
-        .fromTo(`.${styles.introduce} .${styles.numIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
-        .fromTo(`.${styles.introduce} .${styles.subtitle} .${styles.titleText}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
+        .fromTo(`.${styles.introduce} .${styles.numIcon}`, {scale:0, opacity:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
+        .fromTo(`.${styles.introduce} .${styles.subtitle} .${styles.titleText}`,{x:150, opacity:0}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
         .fromTo(`.${styles.introCard}`, {y:-100}, {y:0, opacity:1, duration:0.5, stagger:0.2, ease: "power2.inOut"}, "<")
         .fromTo(`.${styles.introIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.3, stagger:0.2})
         .fromTo(`.${styles.cardTitle}`, {x:70}, {x:0, opacity:1, duration:0.5, stagger:0.1, ease:"power2.inOut"}, "<")
@@ -142,11 +143,11 @@ const useAboutContentAnimation = ({contentBoxRef, styles}: Props) => {
         });
 
         skillsAnimationTimeline
-        .fromTo(`.${styles.skills} .${styles.numIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
-        .fromTo(`.${styles.skills} .${styles.subtitle} .${styles.titleText}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
+        .fromTo(`.${styles.skills} .${styles.numIcon}`, {scale:0, opacity:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
+        .fromTo(`.${styles.skills} .${styles.subtitle} .${styles.titleText}`,{x:150, opacity:0}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
         .fromTo(`.${styles.skillListTitle}`, {y:-70, opacity:0}, {y:0, opacity:1, duration:0.5, stagger:0.1})
         .fromTo(`.${styles.skillList}`, {y:-70, opacity:0}, {y:0, opacity:1}, "<")
-        .fromTo(`.${styles.skill}`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.02})
+        .fromTo(`.${styles.skill}`, {y:50, opacity:0}, {y:0, opacity:1, duration:0.3, stagger:0.02})
 
         const contactAnimationTimeline = gsap.timeline({
             scrollTrigger: {
@@ -158,8 +159,8 @@ const useAboutContentAnimation = ({contentBoxRef, styles}: Props) => {
         });
 
         contactAnimationTimeline
-        .fromTo(`.${styles.contact} .${styles.numIcon}`, {scale:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
-        .fromTo(`.${styles.contact} .${styles.subtitle} .${styles.titleText}`,{x:150}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
+        .fromTo(`.${styles.contact} .${styles.numIcon}`, {scale:0, opacity:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
+        .fromTo(`.${styles.contact} .${styles.subtitle} .${styles.titleText}`,{x:150, opacity:0}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
         .fromTo(`.${styles.contactBox}`, {opacity:0, borderWidth:0}, {borderWidth:1, opacity:1, duration:0.5})
         .fromTo(`.${styles.contactBox} p`,{opacity:0}, {opacity:1, stagger:0.2, duration:0.5})
         .fromTo(`.${styles.contactBox} a`, {opacity:0}, {opacity:1, duration:0.5})

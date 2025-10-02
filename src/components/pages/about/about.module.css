@@ -359,7 +359,7 @@
 
 @media screen and (max-width: 730px){
     .contentBox{
-        padding: 50px 3% 70px 3%;
+        padding: 70px 3% 70px 3%;
     }
     .title{
         font-size: 50px;
@@ -398,7 +398,7 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-        padding: 20px;
+        padding: 20px 0;
     }
     .introCardList .gridLeft .kimsangho{
         height: 100%;
@@ -422,21 +422,22 @@
         height: auto;
     }
     .skills .skillList{
+        width: 100%;
         padding: 20px;
         min-height: 400px;
+        margin-left: 0;
+        margin-right: 0;
     }
     .skills ul{
-        grid-template-columns: repeat(auto-fit, 90px);
+        grid-template-columns: repeat(auto-fit, 100px);
         gap: 25px;
-    }
-    .skills .skill{
-        flex-basis: 80px;
     }
     .skills .skill .skillIcon{
         width: 40px;
         height: 40px;
     }
     .contact .contactBox{
+        width: 100%;
         flex-direction: column;
         gap: 50px;
         height: auto;
