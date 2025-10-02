@@ -398,7 +398,7 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-        padding: 50px;
+        padding: 20px;
     }
     .introCardList .gridLeft .kimsangho{
         height: 100%;
@@ -426,8 +426,7 @@
         min-height: 400px;
     }
     .skills ul{
-        display: flex;
-        flex-wrap: wrap;
+        grid-template-columns: repeat(auto-fit, 90px);
         gap: 25px;
     }
     .skills .skill{

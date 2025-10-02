@@ -46,17 +46,10 @@ const useHomeScrollEvent = ({ homeRef, contentBoxRef }: Props) => {
                 onLeaveBack: () => hideLayout()
             })
 
-            const wheelingScroll = (e:WheelEvent) => {
-
-                if(scrolling.current){
-                    e.preventDefault();
-                    return;
-                }
-
-                e.preventDefault();
+            const handleHomeScroll = (direction: number) => {
+                if(scrolling.current) return;
                 scrolling.current = true;
-
-                const direction = e.deltaY > 0 ? 1 : -1;
+                
                 const scrollRange = direction === 1 ? window.innerHeight : 0;
 
                 gsap.to(window, {
@@ -70,11 +63,30 @@ const useHomeScrollEvent = ({ homeRef, contentBoxRef }: Props) => {
                 })
             }
 
+            const wheelingScroll = (e:WheelEvent) => {
+                e.preventDefault();
+                const direction = e.deltaY > 0 ? 1 : -1;
+                handleHomeScroll(direction);
+            }
+
+            const keyboardScroll = (e:KeyboardEvent) => {
+                if(e.key === "ArrowDown"){
+                    e.preventDefault();
+                    handleHomeScroll(1);
+                }
+                else if(e.key === "ArrowUp"){
+                    e.preventDefault();
+                    handleHomeScroll(-1);
+                }
+            }
+
             homeRef.current?.addEventListener("wheel", wheelingScroll, { passive: false });
+            window.addEventListener("keydown", keyboardScroll);
 
             return () => {
 
                 homeRef.current?.removeEventListener("wheel", wheelingScroll);
+                window.removeEventListener("keydown", keyboardScroll);
                 ScrollTrigger.getAll().forEach(trigger => trigger.kill());
             }
 
