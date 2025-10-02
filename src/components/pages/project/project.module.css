@@ -456,6 +456,15 @@
     .projectBoard{
         padding: 40px 0;
     }
+    .boardContainer .projectBoard .projectCardList .projectCard{
+        height: 100% !important;
+    }
+    .backSide .titleBox p:first-child{
+        font-size: 28px;
+    }
+    .tagBox .tag{
+        font-size: 14px;
+    }
     .boardUpper .mobileDragGuide {
         display: inline-block;
     }
