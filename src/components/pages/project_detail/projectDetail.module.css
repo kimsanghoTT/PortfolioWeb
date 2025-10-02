@@ -341,8 +341,8 @@
         gap: 10px;
     }
     .description p{
-    margin-top: 20px;
-    margin-left: 30px;
+        margin-top: 20px;
+        margin-left: 30px;
     }
     .skill{
         margin-top: 20px;
@@ -364,7 +364,7 @@
         box-shadow: 0 0 5px rgba(0,0,0,0.2);
     }
     .skill li{
-        flex-basis: 18%;
+        flex-basis: 20%;
     }
     .skill .skillIcon{
         width: 40px;
