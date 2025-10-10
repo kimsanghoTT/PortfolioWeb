@@ -257,7 +257,6 @@
     height: 100%;
     object-fit: cover;
 }
-
 .sampleImages .imageModalWrapper{
     position: fixed;
     width: 100vw;
@@ -448,7 +447,7 @@
         height: 20px;
         opacity: 0;
     }
-    .description .num01, .usedSkills .num02, .references .num03{
+    .description .num01, .usedSkills .num02, .sampleImages .num03, .references .num04{
         background-size: 20px 20px;
     }
     .listBlock{
@@ -486,6 +485,20 @@
     .skill .skillIcon{
         width: 40px;
         height: 40px;
+    }
+    .sampleImages .imageBox{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-left: 0;
+    }
+    .sampleImages .imageModalContainer{
+        width: 100%;
+    }
+    .sampleImages .imageModalWrapper .closeBtn{
+        width: 35px;
+        height: 35px;
+        top: -35px;
     }
     .references ul{
         margin-left: 30px;
