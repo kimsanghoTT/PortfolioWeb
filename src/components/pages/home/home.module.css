@@ -271,7 +271,7 @@
     }
     .mainContent{
         width: 100%;
-        padding: 70px 3.5% 70px 3.5%;
+        padding: 60px 3.5% 70px 3.5%;
         gap: 20px;
         justify-content: flex-start;
     }

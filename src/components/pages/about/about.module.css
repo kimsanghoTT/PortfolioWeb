@@ -359,7 +359,7 @@
 
 @media screen and (max-width: 730px){
     .contentBox{
-        padding: 70px 3% 70px 3%;
+        padding: 60px 3% 70px 3%;
     }
     .title{
         font-size: 50px;
@@ -441,7 +441,7 @@
         flex-direction: column;
         gap: 50px;
         height: auto;
-        padding: 50px;
+        padding: 20px;
         align-items: start;
         justify-content: start;
     }

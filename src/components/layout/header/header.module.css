@@ -178,7 +178,7 @@
 @media screen and (max-width:730px) {
     .headerContainer{
         position: fixed;
-        height: 70px;
+        height: 60px;
         padding: 0 3.5%;
     }
     .headerContainer .logoBox{

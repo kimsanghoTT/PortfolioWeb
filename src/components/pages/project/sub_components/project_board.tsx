@@ -10,11 +10,12 @@ import ProjectCard from "./project_card";
 interface Project {
     id: string;
     type: string;
-    summary:string;
+    summary: string;
     title: string;
     description: string;
-    video:string;
+    video: string;
     image: string;
+    sampleImages: { id: string; image: string }[];
     languages: { name: string; image: string }[];
     frameworks: { name: string; image: string }[];
     DB: { name: string; image: string }[];

@@ -1,22 +1,22 @@
 import Link from "next/link";
 import styles from "../projectDetail.module.css";
 
-interface Skills{
-    name: string,
-    image:string
-}
-
 interface Project {
     id: string;
+    type: string;
+    summary: string;
     title: string;
     description: string;
+    video: string;
     image: string;
-    languages: Skills[]; 
-    frameworks: Skills[]; 
-    DB: Skills[];
+    sampleImages: { id: string; image: string }[];
+    languages: { name: string; image: string }[];
+    frameworks: { name: string; image: string }[];
+    DB: { name: string; image: string }[];
+    techSummary: { languages: string[], frameworks: string[]};
     git: string;
     notion: string;
-    link: string; 
+    link: string;
 }
 
 interface Props{
@@ -27,7 +27,7 @@ const References = ({project}: Props) => {
     return(
         <div className={`${styles.references} ${styles.listBlock}`}>
             <div className={styles.title}>
-                <span className={`${styles.numIcon} ${styles.num03}`}><span className="hidden">넘버링아이콘</span></span>
+                <span className={`${styles.numIcon} ${styles.num04}`}><span className="hidden">넘버링아이콘</span></span>
                 <span className={styles.titleText}>References</span>
             </div>
             <ul>

@@ -127,8 +127,12 @@
     background: url("/source/img/icons/list02.png") no-repeat center;
     background-size: 30px 30px;
 }
-.references .num03{
+.sampleImages .num03{
     background: url("/source/img/icons/list03.png") no-repeat center;
+    background-size: 30px 30px;
+}
+.references .num04{
+    background: url("/source/img/icons/list04.png") no-repeat center;
     background-size: 30px 30px;
 }
 .subtitle{
@@ -201,6 +205,113 @@
     width: 50px;
     height: 50px;
 }
+.sampleImages .imageBox{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 420px);
+    row-gap: 30px;
+    column-gap: 60px;
+}
+.sampleImages .imageBox .imageFrame{
+    aspect-ratio: 16 / 9;
+    padding: 6px; 
+    background-color: #ddd; 
+    box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.4);
+    transition: background-color .5s ease, box-shadow .5s ease;
+    cursor: pointer;
+    position: relative;
+    opacity: 0;
+}
+.sampleImages .imageBox .image{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.imageBox .imageFrame .image::before{
+    content: '';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+.imageBox .imageFrame:hover .image::before{
+    opacity: 1;
+}
+.imageBox .image .imageGuide{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+.imageBox .imageFrame:hover .image .imageGuide{
+    opacity: 1;
+}
+.imageBox .imageFrame .image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sampleImages .imageModalWrapper{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sampleImages .imageModalWrapper::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    inset: 0;
+}
+.imageModalWrapper .imageModalContainer{
+    width: 80%;
+    height: fit-content;
+    position: relative;
+}
+.imageModalWrapper .imageModalContainer .closeBtn{
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    padding: 0;
+    border: none;
+    background: none;
+    right: 0;
+    top: -60px;
+    filter: invert(1);
+    cursor: pointer;
+}
+.imageModalWrapper .imageModalContainer .closeBtn .ico{
+    display: inline-block;
+    background: url('/source/img/icons/m_close.png') no-repeat center/cover;
+    width: 100%;
+    height: 100%;
+}
+.imageModalWrapper .imageModalContainer .imageModalFrame{
+    width: 100%;
+    height: 100%;
+    background-color: #aaa; 
+    padding: 6px;
+    transition: background-color .5s ease;
+}
+.imageModalContainer .imageModalFrame img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
 .references ul{
     margin-top: 30px;
     display: flex;
@@ -265,7 +376,13 @@
 :global(body.darkMode) .skill .skillListContainer{
     background-color: #777;
 }
-
+:global(body.darkMode) .sampleImages .imageBox .imageFrame{
+    background-color: #555;
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.8);
+}
+:global(body.darkMode) .imageModalWrapper .imageModalContainer .imageModalFrame{
+    background-color: #555;
+}
 :global(body.darkMode) .link a{
     color: #ccc;
 }

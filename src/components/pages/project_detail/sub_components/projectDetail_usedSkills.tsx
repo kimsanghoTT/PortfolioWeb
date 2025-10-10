@@ -1,21 +1,21 @@
 import styles from "../projectDetail.module.css";
 
-interface Skills{
-    name: string,
-    image:string
-}
-
 interface Project {
     id: string;
+    type: string;
+    summary: string;
     title: string;
     description: string;
+    video: string;
     image: string;
-    languages: Skills[]; 
-    frameworks: Skills[]; 
-    DB: Skills[];
+    sampleImages: { id: string; image: string }[];
+    languages: { name: string; image: string }[];
+    frameworks: { name: string; image: string }[];
+    DB: { name: string; image: string }[];
+    techSummary: { languages: string[], frameworks: string[]};
     git: string;
     notion: string;
-    link: string; 
+    link: string;
 }
 
 interface Props{

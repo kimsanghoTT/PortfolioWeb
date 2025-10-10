@@ -4,33 +4,32 @@ import projectList from "../project/data.json";
 import styles from "./projectDetail.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import UsedSkills from "./sub_components/projectDetail_usedSkills";
 import References from "./sub_components/projectDetail_references";
-import DarkModeContext from "@/components/darkModeContext";
 import { useGSAP } from "@gsap/react";
-
-interface Skills{
-    name: string,
-    image:string
-}
+import SampleImages from "./sub_components/projectDetail_sampleImages";
 
 interface Project {
     id: string;
+    type: string;
+    summary: string;
     title: string;
     description: string;
+    video: string;
     image: string;
-    languages: Skills[]; 
-    frameworks: Skills[]; 
-    DB: Skills[];
+    sampleImages: { id: string; image: string }[];
+    languages: { name: string; image: string }[];
+    frameworks: { name: string; image: string }[];
+    DB: { name: string; image: string }[];
+    techSummary: { languages: string[], frameworks: string[]};
     git: string;
     notion: string;
-    link: string; 
+    link: string;
 }
 
 const ProjectDetail = () => {
-    const {darkMode} = useContext(DarkModeContext);
     const projectId = useParams().id;
     const project:Project | undefined = projectList.find(item => item.id === projectId);
     const router = useRouter();
@@ -53,7 +52,8 @@ const ProjectDetail = () => {
         .fromTo(`.${styles.languages} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
         .fromTo(`.${styles.frameworks} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
         .fromTo(`.${styles.dbs} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.1, ease:"power2.inOut"}, "<")
-        .fromTo(`.${styles.references} .${styles.subtitle}`, {y:50}, {y:0, opacity:1, duration:0.5, ease:"power2.inOut", stagger:0.3})
+        .fromTo(`.${styles.imageFrame}`, {y:50}, {y:0, opacity:1, duration:0.5, stagger:0.1, ease:"power2.inOut"}, "<")
+        .fromTo(`.${styles.references} .${styles.subtitle}`, {y:50}, {y:0, opacity:1, duration:0.5, ease:"power2.inOut", stagger:0.3}, "<")
         .fromTo(`.${styles.link} a`, {x:50}, {x:0, opacity:1, duration:0.5, stagger:0.2, ease:"power2.inOut"}, "<")      
     },{scope:containerRef})
 
@@ -88,6 +88,7 @@ const ProjectDetail = () => {
                         <p>{project.description}</p>
                     </div>
                     <UsedSkills project={project}/>
+                    <SampleImages project={project}/>
                     <References project={project}/>
                 </div>
             </section>
