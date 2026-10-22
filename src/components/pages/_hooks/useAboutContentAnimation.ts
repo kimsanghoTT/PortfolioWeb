@@ -133,6 +133,26 @@ const useAboutContentAnimation = ({contentBoxRef, styles}: Props) => {
         .fromTo(`.${styles.education} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.2}, "<")
         .fromTo(`.${styles.certificate} li`, {y:50}, {y:0, opacity:1, duration:0.3, stagger:0.2}, "<")
 
+        const careerAnimationTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: `.${styles.career}`,
+                start: "top 80%",
+                end: "bottom 99%",
+                toggleActions: isMobile ? "play none none none" : "play reverse play reverse",
+            }
+        })
+
+        careerAnimationTimeline
+        .fromTo(`.${styles.career} .${styles.numIcon}`, {scale:0, opacity:0}, {scale:1, opacity:1, duration:0.5, stagger:0.3})
+        .fromTo(`.${styles.career} .${styles.subtitle} .${styles.titleText}`,{x:150, opacity:0}, {x:0, opacity:1, duration:0.5, stagger:0.3}, "<")
+        .fromTo(`.${styles.careerCard}`, {y:-70}, {y:0, opacity:1, duration:1, stagger:0.2, ease: "power2.inOut"}, "<")
+        .fromTo(`.${styles.careerCardContent}`, {x:70}, {x:0, opacity:1, duration:0.5, stagger:0.1, ease:"power2.inOut"}, "<")
+
+        gsap.utils.toArray<HTMLElement>(`.${styles.careerCard}`).forEach((card) => {
+            careerAnimationTimeline
+            .fromTo(card.querySelectorAll(`.${styles.careerList} li`),{y:50, opacity:0}, {y:0, opacity:1, duration:0.3, stagger:0.2,},"<");
+        });
+6
         const skillsAnimationTimeline = gsap.timeline({
             scrollTrigger: {
                 trigger: `.${styles.skills}`,   

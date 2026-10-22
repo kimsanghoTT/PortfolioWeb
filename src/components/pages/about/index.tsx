@@ -5,6 +5,7 @@ import styles from "./about.module.css";
 import AboutSkills from "./sub_components/about_skills";
 import AboutContact from "./sub_components/about_contact";
 import AboutIntroduce from "./sub_components/about_introduce";
+import AboutCareer from "./sub_components/about_career";
 import useAboutContentAnimation from "../_hooks/useAboutContentAnimation";
 
 const About = () => {
@@ -29,6 +30,7 @@ const About = () => {
                 </div>
                 <div className={styles.content}>
                     <AboutIntroduce/>
+                    <AboutCareer/>
                     <AboutSkills/>
                     <AboutContact/>
                 </div>
